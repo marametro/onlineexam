@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AngularJS GET request with PHP</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body>
+<br>
+<div class="row">
+<div class="container">
+<h1>Angular $http GET Ajax Call</h1>
+<div ng-app="fetch" ng-controller="dbCtrl">
+ 
+<table class="table table-hover">
+<tr>
+<th>Name</th>
+</tr>
+<tbody>
+<tr ng-repeat="x in participants">
+<td>{{x.name}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</body>
+<script>
+var fetch = angular.module('fetch', []);
+fetch.controller('dbCtrl', ['$scope', '$http', function ($scope, $http) {
+$http.get("http://localhost:7777/onlineexam/api/v1/participants")
+.then(function (response){
+	$scope.participants = response.data.records;}
+	);
+
+}]);
+</script>
+</html>

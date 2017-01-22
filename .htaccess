@@ -1,0 +1,30 @@
+RewriteEngine on
+
+RewriteRule ^login$ index.php?pages=login [L]
+RewriteRule ^register$ index.php?pages=register [L]
+RewriteRule ^dashboard$ dashboard.php?pages=dashboard [L]
+RewriteRule ^profile$ dashboard.php?pages=profile [L]
+RewriteRule ^logout$ dashboard.php?pages=logout [L]
+RewriteRule ^tryoutboxchild$ dashboard.php?pages=tryout_box_child [L]
+
+RewriteRule ^paketbyid-(.*)-(.*)\.html$ home.php?halaman=paketbyid&id=$1 [L]
+RewriteRule ^orderpaket-(.*)-(.*)\.html$ home.php?halaman=orderpaket&id=$1 [L]
+RewriteRule ^bookingnow$ home.php?halaman=bookingnow [L]
+RewriteRule ^finishorder-(.*)-(.*)\.html$ home.php?halaman=finishorder&id=$1 [L]
+RewriteRule ^hargapaket$ home.php?halaman=hargapaket [L]
+RewriteRule ^finishorderpaket-(.*)-(.*)\.html$ home.php?halaman=finishorderpaket&id=$1 [L]
+RewriteRule ^deposit$ home.php?halaman=deposit [L]
+RewriteRule ^procesdeposit$ home.php?halaman=procesdeposit [L]
+RewriteRule ^travelfaq$ home.php?halaman=travelfaq [L]
+RewriteRule ^gallery$ home.php?halaman=gallery [L]
+RewriteRule ^carapesan$ home.php?halaman=carapesan [L]
+RewriteRule ^contact$ home.php?halaman=contact [L]
+RewriteRule ^acaratour$ home.php?halaman=acaratour [L]
+RewriteRule ^ordercarnow$ home.php?halaman=ordercarnow [L]
+RewriteRule ^pageordercarnow$ home.php?halaman=pageordercarnow [L]
+RewriteRule ^pageactionordercarnow$ home.php?halaman=pageactionordercar [L]
+
+
+RewriteRule ^slidebyid-(.*)-(.*)\.html$ home.php?halaman=slidebyid&id=$1 [L]
+
+Options All -Indexes
