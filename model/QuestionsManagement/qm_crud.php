@@ -26,6 +26,8 @@
 
 		switch($page)  
 		{
+			case 'quest_definition':
+			break;
 			case 'tryout':
 			break;
 			case 'quest':
@@ -53,6 +55,17 @@
 					$_POST['cu']['createdate'] = date("Y-m-d H:i:s");
 					switch($page)  
 					{
+						case 'quest_definition':
+							$datapost = array('definition_name' => $_POST['cu']['definition_name'],
+							'correct_amount' => $_POST['cu']['correct_amount'],
+							'wrong_amount' => $_POST['cu']['wrong_ammount'],	
+							'unworked' => $_POST['cu']['unworked'],	
+							'createby' => $_POST['userid'],
+							'createdate' => date("Y-m-d H:i:s")
+							);	
+							$result = $model->create($page,$datapost);
+						break;
+
 						case 'quest':
 							$lokasi_file    = $_FILES['fupload']['tmp_name'];
 							$tipe_file      = $_FILES['fupload']['type'];
@@ -101,7 +114,6 @@
 								$result = $model->create("manage_quest",$dataQuest);
 								$i++;
 							}
-
 						break;
 					}
 
@@ -201,9 +213,6 @@
 				echo'updateok';
 
 			}
-
-
-
 		}
 	}
 	

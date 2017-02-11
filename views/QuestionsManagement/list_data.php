@@ -7,8 +7,16 @@
 		<th class="col-sm-0">N0</th>
 
 		<?php switch($page): 
-			
-			case 'tryout_kind': ?>
+			case 'quest_definition': ?>
+			    <th class="center">Definition Name</th>
+				<th class="center">Jumlah Benar</th>
+				<th class="center">Jumlah Salah</th>
+				<th class="center">Tidak Dikerjakan</th>
+			    <th>Create By</th>
+		    	<th>Create Date</th>
+			<?php break; ?>
+
+			<?PHP case 'tryout_kind': ?>
 			    <th class="center">Jenis Try Out</th>
 			    <th>Create By</th>
 		    	<th>Create Date</th>
@@ -64,7 +72,17 @@
 		
 		<?php switch($page): 
 			
-			case 'tryout_kind': ?>
+			case 'quest_definition': ?>
+				<td><?PHP echo $numbers; ?></td>
+			    <td><?PHP echo $key->definition_name; ?></td>
+				<td><?PHP echo $key->correct_amount; ?></td>
+				<td><?PHP echo $key->wrong_amount; ?></td>
+				<td><?PHP echo $key->unworked; ?></td>
+			    <td><?PHP  ?></td>
+				<td><?PHP  ?></td>
+			<?php break; ?>
+			
+			<?PHP case 'tryout_kind': ?>
 					<td><?PHP echo $numbers; ?></td>
 			    <td><?PHP echo $key->name; ?></td>
 			    <td><?PHP echo $key->create_by; ?></td>
@@ -224,7 +242,7 @@
 						(
 							$page=="tryout" ? $key->title : 
 							(
-								$page=="manage" ? $key->code : $key->name
+								$page=="manage" ? $key->code : $key->id
 							)	//manage
 						) //title_exam
 					) //quest

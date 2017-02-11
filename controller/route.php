@@ -41,7 +41,8 @@
 				$Controller->DAddEdit($page,'add',$_GET['id']);	
 			}
 		break;
-
+		
+		case'quest_definition':
 		case 'tryout_kind':
 		case 'tryout':
 		case 'quest':

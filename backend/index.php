@@ -200,11 +200,12 @@
         </span>
       </a>
       <ul class="treeview-menu">
-		<?PHP echo isset($_SESSION['permission']['elearn_qm_tryout_kind']) ? ($_SESSION['permission']['elearn_qm_tryout_kind']['menu'] ? "<li><a href='?page=tryout_kind&mod=qm&action=list'><i class='fa fa-circle-o text-aqua'></i>Data Jenis Tryout</a></li>" : "") : ""; ?>
-		 <?PHP echo isset($_SESSION['permission']['elearn_qm_quest']) ? ($_SESSION['permission']['elearn_qm_quest']['menu'] ? "<li><a href='?page=quest&mod=qm&action=list'><i class='fa fa-circle-o text-aqua'></i>Data Soal</a></li>" : "") : ""; ?>
-		<?PHP echo isset($_SESSION['permission']['elearn_qm_tryout']) ? ($_SESSION['permission']['elearn_qm_tryout']['menu'] ? "<li><a href='?page=tryout&mod=qm&action=list'><i class='fa fa-circle-o text-aqua'></i>Data Tryout</a></li>" : "") : ""; ?>
-    <?PHP echo isset($_SESSION['permission']['elearn_qm_manage']) ? ($_SESSION['permission']['elearn_qm_manage']['menu'] ? "<li><a href='?page=manage&mod=qm&action=list'><i class='fa fa-circle-o text-aqua'></i>Manajemen Soal</a></li>" : "") : ""; ?>
-    <?PHP echo isset($_SESSION['permission']['elearn_qm_manage']) ? ($_SESSION['permission']['elearn_qm_manage']['menu'] ? "<li><a href='?page=quest_backup&mod=qm&action=list'><i class='fa fa-circle-o text-aqua'></i>Backup Soal</a></li>" : "") : ""; ?>
+        <?PHP echo isset($_SESSION['permission']['elearn_qm_quest_definition']) ? ($_SESSION['permission']['elearn_qm_quest_definition']['menu'] ? "<li><a href='?page=quest_definition&mod=qm&action=list'><i class='fa fa-circle-o text-aqua'></i>Setting Definition Soal</a></li>" : "") : ""; ?>
+        <?PHP echo isset($_SESSION['permission']['elearn_qm_tryout_kind']) ? ($_SESSION['permission']['elearn_qm_tryout_kind']['menu'] ? "<li><a href='?page=tryout_kind&mod=qm&action=list'><i class='fa fa-circle-o text-aqua'></i>Data Jenis Tryout</a></li>" : "") : ""; ?>
+        <?PHP echo isset($_SESSION['permission']['elearn_qm_quest']) ? ($_SESSION['permission']['elearn_qm_quest']['menu'] ? "<li><a href='?page=quest&mod=qm&action=list'><i class='fa fa-circle-o text-aqua'></i>Data Soal</a></li>" : "") : ""; ?>
+        <?PHP echo isset($_SESSION['permission']['elearn_qm_tryout']) ? ($_SESSION['permission']['elearn_qm_tryout']['menu'] ? "<li><a href='?page=tryout&mod=qm&action=list'><i class='fa fa-circle-o text-aqua'></i>Data Tryout</a></li>" : "") : ""; ?>
+        <?PHP echo isset($_SESSION['permission']['elearn_qm_manage']) ? ($_SESSION['permission']['elearn_qm_manage']['menu'] ? "<li><a href='?page=manage&mod=qm&action=list'><i class='fa fa-circle-o text-aqua'></i>Manajemen Soal</a></li>" : "") : ""; ?>
+        <?PHP echo isset($_SESSION['permission']['elearn_qm_manage']) ? ($_SESSION['permission']['elearn_qm_manage']['menu'] ? "<li><a href='?page=quest_backup&mod=qm&action=list'><i class='fa fa-circle-o text-aqua'></i>Backup Soal</a></li>" : "") : ""; ?>
       </ul>
     </li>
     <li class="treeview">

@@ -20,6 +20,11 @@ class QmController
 	public function DList($tbl)
 	{
 		switch($tbl){
+
+			case 'quest_definition' :
+				$title = 'Definition Soal';
+			break;
+
 			case 'tryout_kind' :
 				$title = 'Jenis Tryout';
 			break;
@@ -59,6 +64,16 @@ class QmController
 		$dataAll =  $this->Model->getAll($tbl);
 		
 		switch($tbl){
+			
+			case 'quest_definition' :
+				$title = 'Definition Soal';
+				$definition_name = (isset($data->definition_name)) ? $data->definition_name : '';
+				$correct_amount = (isset($data->correct_amount)) ? $data->correct_amount : '';
+				$wrong_amount = (isset($data->wrong_amount)) ? $data->wrong_amount : '';
+				$unworked = (isset($data->unworked)) ? $data->unworked : '';
+				
+			break;
+
 			case 'tryout_kind' :
 				$title = 'Jenis Tryout';
 				$name = (isset($data->name)) ? $data->name : '';

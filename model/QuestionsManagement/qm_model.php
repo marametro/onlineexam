@@ -14,9 +14,12 @@ class QmModel {
 	public function getAll($tbl)
 	{
 		switch($tbl){
+
+			case'quest_definition':
+				$query = "select * from elearn_qm_quest_definition";
+			break;
 			case 'tryout':
-				$query = "select 
-										d.username create_by, b.name study, c.name cat, a.*  
+				$query = "select   d.username create_by, b.name study, c.name cat, a.*  
 									from elearn_qm_".$tbl." a
 									left join elearn_md_study b on a.elearn_md_study_id = b.id
 									inner join elearn_qm_tryout_kind c on a.elearn_qm_tryout_kind_id = c.id

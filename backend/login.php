@@ -47,9 +47,6 @@
 					cache: false,
 					beforeSend: function(){ $("#btn-login").val('Connecting...');},
 					success: function(data){
-						
-// alert(data);
-
 						if(data)
 						{
 							$("body").load("index.php").hide().fadeIn(1500).delay(6000);

@@ -2,8 +2,43 @@
 <?php $page=strtolower($_GET['page']); ?>
 
 <?php switch($page): 
+
+	case 'quest_definition': ?>
+    <div class="col-sm-8">
+	  	<div class="form-group">
+			<label for="cu_name" class="col-sm-4 control-label">Definition Name Soal</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="cu_definition_name" name="cu[definition_name]" value="<?PHP echo $definition_name; ?>">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="cu_name" class="col-sm-4 control-label">Jumlah Benar</label>
+			<div class="col-sm-4">
+				<input type="number" class="form-control" id="cu_correct_ammount" name="cu[correct_amount]" value="<?PHP echo $correct_amount; ?>">	
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="cu_name" class="col-sm-4 control-label">Jumlah Salah</label>
+			<div class="col-sm-4">
+				<input type="number" class="form-control" id="cu_wrong_ammount" name="cu[wrong_ammount]" value="<?PHP echo $wrong_amount; ?>">	
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="cu_name" class="col-sm-4 control-label">Tidak Dikerjakan</label>
+			<div class="col-sm-4">
+				<input type="number" class="form-control" id="cu_unworked" name="cu[unworked]" value="<?PHP echo $unworked; ?>">	
+			</div>
+		</div>
+		<div class="box-footer with-border">
+			<div class="form-group">
+			<label class="col-sm-2 control-label"></label>
+			<input  type="submit" id="save" name="save" class="btn btn-primary" Value="Simpan">
+			</div>
+		</div>
+	</div>
+	<?php break; ?>
 	
-	case 'tryout_kind': ?>
+	<?PHP case 'tryout_kind': ?>
     <div class="col-sm-8">
 	  	<div class="form-group">
 				<label for="cu_name" class="col-sm-4 control-label">Jenis Tryout</label>
@@ -28,7 +63,7 @@
 				<div class="col-sm-8">
 					<input type="text" class="form-control" id="cu_title" name="cu[title]" value="<?PHP echo $txtTitle; ?>">
 				</div>
-			</div>
+		</div>
     	<div class="form-group">
 				<label for="ddCat" class="col-sm-3 control-label">Jenis Tryout</label>
 				<div class="col-sm-6">
