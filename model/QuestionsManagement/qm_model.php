@@ -47,13 +47,13 @@ class QmModel {
 											b.name study, a.*  
 										from elearn_qm_".$tbl." a
 										inner join elearn_md_study b on a.elearn_md_study_id = b.id
-										WHERE a.isdeleted=0 ".$where;
+										WHERE a.isdeleted=0 ".$where. ' order by a.createdate desc';
 				}else{
 					$query = "select 
 											b.name study, a.*  
 										from elearn_qm_".$tbl." a
 										inner join elearn_md_study b on a.elearn_md_study_id = b.id
-										WHERE a.isdeleted=0 and  a.createby = '".$_SESSION['iduser']."'".$where;
+										WHERE a.isdeleted=0 and  a.createby = '".$_SESSION['iduser']."'".$where . ' order by a.createdate desc';
 				}				
 			break;
 

@@ -136,14 +136,14 @@
 			    		<tr>
 			    			<td class="col-sm-2">Pertanyaan</td>
 			    			<td class="col-sm-0">:</td>
-			    			<td class="col-sm-12"><?PHP echo $key->question; ?></td>
+			    			<td class="col-sm-10"><p class="immagess"> <?PHP echo $key->question; ?></p></td>
 			    		</tr>
 		    		</table>
 			    	<table class="table table-bordered table-striped  table-hover">
 			    		<tr>
 			    			<td class="col-sm-2">A</td>
 			    			<td class="col-sm-0">:</td>
-			    			<td class="col-sm-12"><?PHP echo $key->choice_a; ?></td>
+			    			<td class="col-sm-10"><?PHP echo $key->choice_a; ?></td>
 			    		</tr>
 							<tr>
 			    			<td>B</td>
@@ -170,7 +170,7 @@
 			    		<tr>
 			    			<td class="col-sm-2">Pembahasan</td>
 			    			<td class="col-sm-0">:</td>
-			    			<td class="col-sm-12"><?PHP echo $key->explanation; ?></td>
+			    			<td class="col-sm-10"><?PHP echo $key->explanation; ?></td>
 			    		</tr>
 		    		</table>
 			    </td>
@@ -259,3 +259,15 @@
 		}
 	?>
 </tbody>
+
+<style type="text/css">
+	
+.immagess {
+  display: block;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 10px; /* Width of new image */
+  height: 236px; /* Height of new image */
+  padding-left: 180px; /* Equal to width of new image */
+}	
+</style>
