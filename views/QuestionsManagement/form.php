@@ -24,11 +24,8 @@
 		<input type="hidden" id="userid" name="userid" value="<?php echo $_SESSION['iduser']; ?>"> 
 		<input type="hidden" id="id" name="id" value="<?php echo $id; ?>"> 
 		<input type="hidden" id="action" name="action" value="<?php echo $_GET['action'];?>"> 
-
 		<img class="center-block" id="loading-image-add" src="../images/loading.gif" style="display:none;"/>
-
 	  	<?php include "form_data.php"; ?>
-			
 	</form>
 	</div>
 	</div>

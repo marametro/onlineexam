@@ -40,7 +40,7 @@ $(document).ready(function(){
         },
 		
 		}).done(function(data) {
-			alert(data);
+			
 			if (data =="ok" || data =="updateok")
 			{
 				$("#loading-image-add").show();

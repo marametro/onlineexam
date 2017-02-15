@@ -36,7 +36,38 @@ $(document).ready(function(){
 		var title = '';
 
 		switch (page) {
-			case 'tryout_kind':
+		case 'quest_definition':
+	    	if (page=='quest_definition') title = 'Definition Soal';
+					
+				var cu_definition_name = $('#cu_definition_name').val();
+				if(cu_definition_name == "") 
+				{
+					alert(title+' Definition is empty, Please Enter a value');
+					return;
+				}
+
+				var cu_correct_ammount = $('#cu_correct_ammount').val();				
+				if(cu_correct_ammount == "") 
+				{
+					alert(title+' Jumlah Benar is empty, Please Enter a value');
+					return;
+				}
+				var cu_wrong_ammount = $('#cu_wrong_ammount').val();			
+				if(cu_wrong_ammount == "") 
+				{
+					alert(title+' Jumlah Salah is empty, Please Enter a value');
+					return;
+				}
+				var cu_unworked = $('#cu_unworked').val();			
+				if(cu_unworked == "") 
+				{
+					alert(title+' Tidak Di Kerjakan is empty, Please Enter a value');
+					return;
+				}
+  
+       break;
+	   
+		case 'tryout_kind':
 	    	if (page=='tryout_kind') title = 'Kategori Tryout';
 					
 				var cu_name = $('#cu_name').val();
@@ -45,7 +76,7 @@ $(document).ready(function(){
 					alert(title+' name is empty, Please Enter a value');
 					return;
 				}
-      break;
+       break;
 	    case 'tryout':
 	    	if (page=='tryout') title = 'Judul Ujian';
 				var cu_title = $('#cu_title').val();
@@ -177,7 +208,7 @@ $(document).ready(function(){
         },
 		
 		}).done(function(data) {
-			alert(data);
+			
 			if (data =="ok" || data =="updateok")
 			{
 				$("#loading-image-add").show();
@@ -218,7 +249,7 @@ function SelectLevel(me)
 	  url: "../backend/index.php",
 	  data: datas
 	}).done(function(data) {
-		alert(data);
+		
 		// alert('Delete successfuly');
 		// location.href = "?page="+page+"&action=list";
 	});
