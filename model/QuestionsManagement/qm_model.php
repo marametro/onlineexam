@@ -16,7 +16,7 @@ class QmModel {
 		switch($tbl){
 
 			case'quest_definition':
-				$query = "select * from elearn_qm_quest_definition";
+				$query = "select * from elearn_qm_quest_definition where isdeleted=0 ";
 			break;
 			case 'tryout':
 				$query = "select   d.username create_by, b.name study, c.name cat, a.*  

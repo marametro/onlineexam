@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
   $('.DtPicker').datepicker({
 	 	format: "dd-mm-yyyy",
 	  autoclose: true
@@ -37,6 +38,7 @@ $(document).ready(function(){
 
 		switch (page) {
 		case 'quest_definition':
+
 	    	if (page=='quest_definition') title = 'Definition Soal';
 					
 				var cu_definition_name = $('#cu_definition_name').val();
@@ -209,6 +211,7 @@ $(document).ready(function(){
 		
 		}).done(function(data) {
 			
+			alert(data);
 			if (data =="ok" || data =="updateok")
 			{
 				$("#loading-image-add").show();

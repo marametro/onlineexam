@@ -94,6 +94,9 @@ class QmController
 				$attention = (isset($data->attention)) ? $data->attention : '';
 				$dataCat =  $this->Model->getAll('tryout_kind');
 				$dataStudy =  $this->ModelMD->getAll('study');
+				$definition = (isset($data->elearn_qm_quest_definition_id)) ? $data->elearn_qm_quest_definition_id : '';
+				$dataDefinition =  $this->Model->getAll('quest_definition');
+
 			break;
 
 			case 'quest':

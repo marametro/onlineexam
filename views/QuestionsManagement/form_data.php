@@ -4,6 +4,7 @@
 <?php switch($page): 
 
 	case 'quest_definition': ?>
+    
     <div class="col-sm-8">
 	  	<div class="form-group">
 			<label for="cu_name" class="col-sm-4 control-label">Definition Name Soal</label>
@@ -20,7 +21,7 @@
 		<div class="form-group">
 			<label for="cu_name" class="col-sm-4 control-label">Jumlah Salah</label>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="cu_wrong_ammount" name="cu[wrong_ammount]" value="<?PHP echo $wrong_amount; ?>">	
+				<input type="number" class="form-control" id="cu_wrong_amount" name="cu[wrong_amount]" value="<?PHP echo $wrong_amount; ?>">	
 			</div>
 		</div>
 		<div class="form-group">
@@ -80,24 +81,41 @@
 						?>
 					</select>
 				</div>
+		</div>
+		<div class="form-group">
+			<label for="ddQuestCat" class="col-sm-3 control-label">Mata Pelajaran</label>
+			<div class="col-sm-6">
+				<select class="form-control select2" style="width: 100%;height:100%; " id="cu_elearn_md_study_id" name="cu[elearn_md_study_id]">
+					<?PHP
+						echo "<option>PILIH</option>";
+						foreach($dataStudy as $key)
+						{
+							$selected="";
+							($data->elearn_md_study_id==$key->id)? $selected="selected" : $selected="";  
+							echo "<option value=$key->id $selected>$key->name</option>";
+						}
+						echo "</select>";
+					?>
+				</select>
 			</div>
-			<div class="form-group">
-				<label for="ddQuestCat" class="col-sm-3 control-label">Mata Pelajaran</label>
-				<div class="col-sm-6">
-					<select class="form-control select2" style="width: 100%;height:100%; " id="cu_elearn_md_study_id" name="cu[elearn_md_study_id]">
-						<?PHP
-							echo "<option>PILIH</option>";
-							foreach($dataStudy as $key)
-							{
-								$selected="";
-								($data->elearn_md_study_id==$key->id)? $selected="selected" : $selected="";  
-								echo "<option value=$key->id $selected>$key->name</option>";
-							}
-							echo "</select>";
-						?>
-					</select>
-				</div>
+		</div>
+	    <div class="form-group">
+			<label for="ddDefSoal" class="col-sm-3 control-label">Definition Soal</label>
+			<div class="col-sm-6">
+				<select class="form-control select2" style="width: 100%;height:100%; " id="cu_elearn_qm_quest_definition_id" name="cu[elearn_qm_quest_definition_id]">
+					<?PHP
+						echo "<option>PILIH</option>";
+						foreach($dataDefinition as $key)
+						{
+							$selected="";
+							($data->elearn_qm_quest_definition_id==$key->id)? $selected="selected" : $selected="";  
+							echo "<option value=$key->id $selected>$key->definition_name</option>";
+						}
+						echo "</select>";
+					?>
+				</select>
 			</div>
+		</div>
 	    <div class="form-group">
 				<label for="txtName" class="col-sm-3 control-label">Nilai Kelulusan</label>
 				<div class="col-sm-3">
@@ -411,43 +429,6 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-12">
-					<!-- <div class='box-header box-footer with-border'>
-						<label class='col-sm-1 control-label'>Guru</label>
-						<div class='col-sm-3'>
-							<select onchange='SelectTeacher(this)' class='form-control select2' style='width: 100%;height:100%;' id='teacher_id' name='teacher_id'>
-								<option value='0'>Select All</option>	
-								<?php
-									// foreach($dataTeacher as $key)
-									// {
-									// 	($_GET['teacher_id']==$key->id)? $selected="selected" :$selected="";
-									// 	echo "<option value=$key->id $selected>$key->fullname</option>";
-									// } 
-								?>
-							</select>
-						</div>
-						<label class='col-sm-1 control-label'>Mata Pelajaran</label>
-						<div class='col-sm-3'>
-							<select onchange='SelectStudy(this)' class='form-control select2' style='width: 100%;height:100%;' id='study_id' name='study_id'>
-								<option value='0'>Select All</option>	
-								<?php
-									// foreach($dataStudySum as $key)
-									// {
-									// 	($_GET['study_id']==$key->id)? $selected="selected" :$selected="";
-									// 	echo "<option value=$key->id $selected>$key->name   ($key->jum_soal)</option>";
-									// } 
-								?>
-							</select>
-						</div>
-						<label class='col-sm-1 control-label'>Level</label>
-						<div class='col-sm-3'>
-							<select onchange='SelectLevel(this)' class='form-control select2' style='width: 100%;height:100%;' id='level_id' name='level_id'>
-								<option value='0'>Select All</option>
-								<option value='hard' $SelHard>Hard</option>
-								<option value='medium' $SelMedium>Medium</option>
-								<option value='easy' $SelEasy>Easy</option>
-							</select>
-						</div>
-					</div> -->
 					<table class="table table-bordered table-striped  table-hover">
 					<!-- <table id="dataTable" class="table table-bordered table-striped  table-hover datatables" style='font-size:12px;'> -->
 				  	<thead>

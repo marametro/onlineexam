@@ -8,12 +8,10 @@
 
 		<?php switch($page): 
 			case 'quest_definition': ?>
-			    <th class="center">Definition Name</th>
-				<th class="center">Jumlah Benar</th>
-				<th class="center">Jumlah Salah</th>
-				<th class="center">Tidak Dikerjakan</th>
-			    <th>Create By</th>
-		    	<th>Create Date</th>
+			    <th class="col-sm-4">Definition Name</th>
+				<th class="col-sm-2">Jumlah Benar</th>
+				<th class="col-sm-2">Jumlah Salah</th>
+				<th class="col-sm-2">Tidak Dikerjakan</th>
 			<?php break; ?>
 
 			<?PHP case 'tryout_kind': ?>
@@ -78,8 +76,6 @@
 				<td><?PHP echo $key->correct_amount; ?></td>
 				<td><?PHP echo $key->wrong_amount; ?></td>
 				<td><?PHP echo $key->unworked; ?></td>
-			    <td><?PHP  ?></td>
-				<td><?PHP  ?></td>
 			<?php break; ?>
 			
 			<?PHP case 'tryout_kind': ?>

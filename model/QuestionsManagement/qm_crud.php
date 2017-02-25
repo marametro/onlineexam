@@ -36,9 +36,9 @@
 			break;
 			case 'manage':
 				$key = array(
-											'elearn_qm_tryout_id' => $_POST['cu']['elearn_qm_tryout_id'],
-											'code' => $model->getCode($page)
-										);
+								'elearn_qm_tryout_id' => $_POST['cu']['elearn_qm_tryout_id'],
+								'code' => $model->getCode($page)
+							);
 				$data = $model->check_data($page,$key);
 			break;
 			default:
@@ -58,7 +58,7 @@
 						case 'quest_definition':
 							$datapost = array('definition_name' => $_POST['cu']['definition_name'],
 							'correct_amount' => $_POST['cu']['correct_amount'],
-							'wrong_amount' => $_POST['cu']['wrong_ammount'],	
+							'wrong_amount' => $_POST['cu']['wrong_amount'],	
 							'unworked' => $_POST['cu']['unworked'],	
 							'createby' => $_POST['userid'],
 							'createdate' => date("Y-m-d H:i:s")
@@ -136,6 +136,8 @@
 
 			switch($page)  
 			{
+				case 'quest_definition':
+				break;
 				case 'tryout':
 				break;
 				case 'quest':
@@ -165,6 +167,18 @@
 				$_POST['cu']['updatedate'] = date("Y-m-d H:i:s");
 				switch($page)  
 				{
+
+					case 'quest_definition':
+						$datapost = array('definition_name' => $_POST['cu']['definition_name'],
+						'correct_amount' => $_POST['cu']['correct_amount'],
+						'wrong_amount' => $_POST['cu']['wrong_amount'],	
+						'unworked' => $_POST['cu']['unworked'],	
+						'createby' => $_POST['userid'],
+						'createdate' => date("Y-m-d H:i:s")
+						);
+				
+						$result = $model->update($page,$datapost,$id);
+					break;
 					case 'quest':
 						$lokasi_file    = $_FILES['fupload']['tmp_name'];
 						$tipe_file      = $_FILES['fupload']['type'];
