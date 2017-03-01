@@ -27,9 +27,11 @@
 		break;
 
 		case 'class':
+		case 'school':
 		case 'class_sub':
 		case 'major':
-		case 'study':		
+		case 'study':	
+		case 'sub_study':		
 			include_once'MasterData/md_controller.php';
 			$Controller =  new MdController();
 			if ($_GET['action']=='list'){

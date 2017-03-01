@@ -8,7 +8,13 @@
 
 		<?php switch($page): 
 			
-			case 'class': ?>
+			case 'school': ?>
+				<th  class="center">Sekolah</th>
+				<th>Create By</th>
+		    <th>Create Date</th>
+			<?php break; ?>
+
+			<?PHP case 'class': ?>
 				<th  class="center">Kelas</th>
 				<th>Create By</th>
 		    <th>Create Date</th>
@@ -34,6 +40,13 @@
 		    <th>Create Date</th>
 			<?php break; ?>
 
+			<?php case 'sub_study': ?>
+				<th>Mata Pelajaran</th>
+				<th>Sub Mata Pelajaran</th>
+				<th>Create Date</th>
+		   
+			<?php break; ?>
+
 		<?php 
 				default:
 					echo"Not List";
@@ -54,8 +67,13 @@
 		<td class="center"><?PHP echo $numbers; ?></td>
 		
 		<?php switch($page): 
-			
-			case 'class': ?>
+			case 'school': ?>
+				<td><?PHP echo $key->name; ?></td>
+				<td><?PHP echo $key->create_by; ?></td>
+				<td><?PHP echo $key->createdate; ?></td>
+			<?php break; ?>
+
+			<?PHP case 'class': ?>
 				<td><?PHP echo $key->name; ?></td>
 				<td><?PHP echo $key->create_by; ?></td>
 				<td><?PHP echo $key->createdate; ?></td>
@@ -78,6 +96,11 @@
 			<?php case 'study': ?>
 				<td><?PHP echo $key->name; ?></td>
 				<td><?PHP echo $key->create_by; ?></td>
+				<td><?PHP echo $key->createdate; ?></td>
+			<?php break; ?>
+			<?php case 'sub_study': ?>
+				<td><?PHP echo $key->mapel; ?></td>
+				<td><?PHP echo $key->name; ?></td>
 				<td><?PHP echo $key->createdate; ?></td>
 			<?php break; ?>
 

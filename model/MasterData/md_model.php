@@ -11,6 +11,17 @@ class MdModel {
 	}
 	
 	/* Region Data Master */
+
+	public function getMatapelajaran()
+	{
+		
+		$query = "select * FROM  elearn_md_study where isdeleted=0 ";
+		$result = $this->db->getDataTable($query);
+		return $result;
+
+	}
+
+
 	public function getAll($tbl)
 	{
 		switch($tbl){
@@ -24,6 +35,15 @@ class MdModel {
 									WHERE a.isdeleted=0 
 									order by b.name, c.name, a.name asc ";
 			break;
+			case 'sub_study':
+				$query = "select 
+										d.username create_by, a.*, b.name mapel 
+									from elearn_md_".$tbl." a
+									inner join elearn_md_study b on a.elearn_md_study_id = b.id
+									inner join elearn_um_user d on a.createby = d.id
+									WHERE a.isdeleted=0 ";
+			break;
+			
 
 			default:
 				$query = " SELECT b.username create_by, a.* FROM elearn_md_".$tbl." a 

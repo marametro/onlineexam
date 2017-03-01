@@ -30,6 +30,13 @@
 					'name' => $_POST['cu']['name']
 					);
 			break;
+			case 'sub_study':
+				$key = array(
+					'elearn_md_study_id' => $_POST['cu']['elearn_md_study_id'],
+					'name' => $_POST['cu']['name']
+					);
+			break;
+		
 			default:
 				$key = array('name' => $_POST['cu']['name']);
 		}
@@ -72,6 +79,16 @@
 								$data = $model->check_data($page,$key);
 					}
 				break;
+				case 'sub_study':
+										
+								$key = array(							
+									'elearn_md_study_id' => $_POST['cu']['elearn_md_study_id'],
+									'name' => $_POST['cu']['name']
+									);
+								$data = $model->check_data($page,$key);
+					
+				break;
+
 				default:
 					if ($_POST['name']!=$_POST['cu']['name']){
 						$key = array('name' => $_POST['cu']['name']);

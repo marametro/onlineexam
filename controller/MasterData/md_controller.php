@@ -16,6 +16,9 @@ class MdController
 	public function DList($tbl)
 	{
 		switch($tbl){
+			case 'school' :
+				$title = 'Sekolah';
+			break;
 			case 'class' :
 				$title = 'Kelas';
 			break;
@@ -30,6 +33,10 @@ class MdController
 
 			case 'study':
 				$title = 'Mata Pelajaran';
+			break;
+
+			case 'sub_study':
+				$title = 'Sub Mata Pelajaran';
 			break;
 
 			case 'participant':
@@ -50,6 +57,10 @@ class MdController
 		$dataAll =  $this->Model->getAll($tbl);
 
 		switch($tbl){
+			case 'school' :
+				$title = 'Sekolah';
+				$name = (isset($data->name)) ? $data->name : '';
+			break;
 			case 'class' :
 				$title = 'Kelas';
 				$name = (isset($data->name)) ? $data->name : '';
@@ -73,6 +84,15 @@ class MdController
 				$title = 'Mata Pelajaran';
 				$name = (isset($data->name)) ? $data->name : '';
 			break;
+
+			case 'sub_study':
+				$title = 'Sub Mata Pelajaran';				
+				$dataStudy =  $this->Model->getMatapelajaran();
+				$name = (isset($data->name)) ? $data->name : '';
+				$study_id= (isset($data->elearn_md_study_id)) ? $data->elearn_md_study_id : '';
+				
+			break;
+
 
 			case 'participant':
 				$title = 'Peserta';

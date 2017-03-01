@@ -186,10 +186,12 @@
         </span>
       </a>
       <ul class="treeview-menu">
+        <?PHP echo isset($_SESSION['permission']['elearn_md_school']) ? ($_SESSION['permission']['elearn_md_school']['menu'] ? "<li><a href='?page=school&mod=md&action=list'><i class='fa fa-circle-o text-aqua'></i>Data Sekolah</a></li>" : "") : ""; ?>
         <?PHP echo isset($_SESSION['permission']['elearn_md_class']) ? ($_SESSION['permission']['elearn_md_class']['menu'] ? "<li><a href='?page=class&mod=md&action=list'><i class='fa fa-circle-o text-aqua'></i>Data Kelas</a></li>" : "") : ""; ?>
         <?PHP echo isset($_SESSION['permission']['elearn_md_major']) ? ($_SESSION['permission']['elearn_md_major']['menu'] ? "<li><a href='?page=major&mod=md&action=list'><i class='fa fa-circle-o text-aqua'></i>Data Jurusan</a></li>" : "") : ""; ?>
         <?PHP echo isset($_SESSION['permission']['elearn_md_class_sub']) ? ($_SESSION['permission']['elearn_md_class_sub']['menu'] ? "<li><a href='?page=class_sub&mod=md&action=list'><i class='fa fa-circle-o text-aqua'></i>Data Sub Kelas</a></li>" : "") : ""; ?>
         <?PHP echo isset($_SESSION['permission']['elearn_md_study']) ? ($_SESSION['permission']['elearn_md_study']['menu'] ? "<li><a href='?page=study&mod=md&action=list'><i class='fa fa-circle-o text-aqua'></i>Data Mata Pelajaran</a></li>" : "") : ""; ?>
+        <?PHP echo isset($_SESSION['permission']['elearn_md_sub_study']) ? ($_SESSION['permission']['elearn_md_sub_study']['menu'] ? "<li><a href='?page=sub_study&mod=md&action=list'><i class='fa fa-circle-o text-aqua'></i>Data Sub Mata Pelajaran</a></li>" : "") : ""; ?>
       </ul>
     </li>
     <li class="treeview">
