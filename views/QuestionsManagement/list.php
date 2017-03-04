@@ -1,5 +1,4 @@
 <script src="../views/QuestionsManagement/list.js"></script>
-
 <section style="padding: 0px 15px 0;">
 	<h3>
 		<small><ol class="breadcrumb">
@@ -23,41 +22,37 @@
 		</h3>
 
 		<?PHP
-			if ($_GET['page']=="quest" or $_GET['page']=="quest_backup"){
-				if ($_SESSION['role_id']==1 or $_SESSION['role_id']==2){
-						echo "
-							<div class='box-header box-footer with-border'>
-								<label for='ddrole' class='col-sm-1 control-label'>Guru</label>
-								<div class='col-sm-3'>
-									<select onchange='SelectTeacher(this)' class='form-control select2' style='width: 100%;height:100%;' id='teacher_id' name='teacher_id'>
-						";			
-									echo "<option value='0'>Select All</option>";
-									foreach($dataTeacher as $key)
-									{
-										($_GET['teacher_id']==$key->id)? $selected="selected" :$selected="";
-										echo "<option value=$key->id $selected>$key->fullname</option>";
-									}
-									echo "</select>";
-						echo "
-									</select>
-								</div>";
-
-							  echo "
-										<label for='ddrole' class='col-sm-1 control-label'>Mata Pelajaran</label>
+			if ($_GET['page']=="quest" or $_GET['page']=="quest_backup")
+			{
+				if ($_SESSION['role_id']==1 or $_SESSION['role_id']==2)
+				{
+					echo "<div class='box-header box-footer with-border'>
+							<label for='ddrole' class='col-sm-1 control-label'>Guru</label>
+							<div class='col-sm-3'>
+							<select onchange='SelectTeacher(this)' class='form-control select2' style='width: 100%;height:100%;' id='teacher_id' name='teacher_id'>
+					";			
+					echo "<option value='0'>Select All</option>";
+						foreach($dataTeacher as $key)
+						{
+							($_GET['teacher_id']==$key->id)? $selected="selected" :$selected="";
+							echo "<option value=$key->id $selected>$key->fullname</option>";
+						}
+					echo"</select>";
+					echo"</select>
+						</div>";
+							  echo"<label for='ddrole' class='col-sm-1 control-label'>Mata Pelajaran</label>
 										<div class='col-sm-3'>
-											<select onchange='SelectStudy(this)' class='form-control select2' style='width: 100%;height:100%;' id='study_id' name='study_id'>
+									<select onchange='SelectStudy(this)' class='form-control select2' style='width: 100%;height:100%;' id='study_id' name='study_id'>
 								";			
-											echo "<option value='0'>Select All</option>";
-											foreach($dataStudySum as $key)
-											{
-												($_GET['study_id']==$key->id)? $selected="selected" :$selected="";
-												echo "<option value=$key->id $selected>$key->name   ($key->jum_soal)</option>";
-											}
-											echo "</select>";
-								echo "
-											</select>
-										</div>
-							  ";
+								echo "<option value='0'>Select All</option>";
+										foreach($dataStudySum as $key)
+										{
+											($_GET['study_id']==$key->id)? $selected="selected" :$selected="";
+											echo "<option value=$key->id $selected>$key->name   ($key->jum_soal)</option>";
+										}
+								echo "</select>";
+								echo "</select>
+									</div>";
 			  	}
 
 							  echo "
@@ -69,10 +64,10 @@
 											($_GET['level_id']=='medium')? $SelMedium="selected" : $SelMedium="";
 											($_GET['level_id']=='easy')? $SelEasy="selected" : $SelEasy="";
 											echo "
-														<option value='0'>Select All</option>
-														<option value='hard' $SelHard>Hard</option>
-														<option value='medium' $SelMedium>Medium</option>
-														<option value='easy' $SelEasy>Easy</option>
+													<option value='0'>Select All</option>
+													<option value='hard' $SelHard>Hard</option>
+													<option value='medium' $SelMedium>Medium</option>
+													<option value='easy' $SelEasy>Easy</option>
 											";
 											echo "</select>";
 								echo "
@@ -91,7 +86,7 @@
 		<input type="hidden" id="userid" name="userid" value="<?php echo $_SESSION['iduser']; ?>"> 
 	  <?php switch($_GET['page']):
 	  			case 'quest': ?>
-	  				<table class="table table-bordered table-striped table-hover">
+	  				<table class="table table-bordered table-striped table-hover datatables">
 					  	
 					  	<?php include "list_data.php"; ?>
 					  
@@ -99,7 +94,7 @@
 		<?php break; ?>
 
 	  <?php default: ?>
-					  <table id="dataTable" class="table table-bordered table-striped  table-hover" <?php if (strtolower($_GET['page'])=='quest'){ echo "style='font-size:12px;'";} ?>>
+					  <table id="dataTable" class="table table-bordered table-striped  table-hover datatables" <?php if (strtolower($_GET['page'])=='quest'){ echo "style='font-size:12px;'";} ?>>
 					  	
 					  	<?php include "list_data.php"; ?>
 					  

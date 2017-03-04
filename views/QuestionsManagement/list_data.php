@@ -92,22 +92,21 @@
 			    <td><?PHP echo $key->study; ?></td>
 			    <td><?PHP echo $key->min_value; ?></td>
 			    <td><?PHP echo $key->create_by; ?></td>
-					<td><?PHP echo $key->createdate; ?></td>
+				<td><?PHP echo $key->createdate; ?></td>
 			<?php break; ?>
-
 			<?php case 'quest': ?>
 			<?php case 'quest_backup': ?>
-					<td class="col-sm-0"><?PHP echo $numbers; ?></td>
+				<td class="col-sm-0"><?PHP echo $numbers; ?></td>
 			    <td>
-			    	<table  class="table table-bordered table-striped  table-hover">
+			    	<table class="table table-bordered table-striped  table-hover datatables">
 			    		<tr>
-			    			<td class="col-sm-5">Mata Pelajaran</td>
-			    			<td class="col-sm-0">:</td>
-			    			<td class="col-sm-8"><?PHP echo $key->study; ?></td>
+			    			<td>Mata Pelajaran</td>
+			    			<td>:</td>
+			    			<td><?PHP echo $key->study; ?></td>
 			    		</tr>
 			    		<tr>
 			    			<td>Level</td>
-			    			<td class="col-sm-0">:</td>
+			    			<td>:</td>
 			    			<td><?PHP echo $key->level; ?></td>
 			    		</tr>
 			    		<tr>
@@ -115,27 +114,30 @@
 			    			<td>:</td>
 			    			<td><?PHP echo $key->answer; ?></td>
 			    		</tr>
-			    		<tr>
-			    			<!-- <td colspan="3"><img height="50%" width="100%" src="../Pictures/quest/acer.png" class="img" alt="Soal Image"></td> -->
+			    		<tr>			
 			    			<td colspan="3">
 								<?PHP if  ($key->photo_url != '') { ?>
 								<img height="50%" width="100%" src="../Pictures/<?php echo $page.'/'.$key->photo_url; ?>" class="img" alt="Soal Image">
 								<?PHP }else { ?>
-								<img height="50%" width="100%" src="" class="img" alt="Soal Image">
+								<img height="50%" width="100%" src="" class="img" alt="Pertanyaan Image">
 								<?PHP } ?>
 							</td>
 			    		</tr>
 			    	</table>
 			    </td>
 			    <td>
-			    	<table class="table table-bordered table-striped  table-hover">
+			    	<table class="table table-bordered table-striped table-hover datatables">
 			    		<tr>
-			    			<td class="col-sm-2">Pertanyaan</td>
-			    			<td class="col-sm-0">:</td>
-			    			<td class="col-sm-10"><p class="immagess"> <?PHP echo $key->question; ?></p></td>
+							<td class="col-sm-2">Pertanyaan</td>
+			    		</tr>
+			    		<tr>
+			    			<td class="col-sm-10"><?PHP echo $key->question; ?></td>
 			    		</tr>
 		    		</table>
-			    	<table class="table table-bordered table-striped  table-hover">
+		    		<table class="table table-bordered table-striped table-hover datatables">
+		    			<tr>
+			    			<td colspan="3">Pilihan Jawaban</td>
+			    		</tr>
 			    		<tr>
 			    			<td class="col-sm-2">A</td>
 			    			<td class="col-sm-0">:</td>
@@ -162,7 +164,7 @@
 			    			<td><?PHP echo $key->choice_e; ?></td>
 			    		</tr>
 			    	</table>
-			    	<table class="table table-bordered table-striped  table-hover">
+			    	<table class="table table-bordered table-striped table-hover datatables">
 			    		<tr>
 			    			<td class="col-sm-2">Pembahasan</td>
 			    			<td class="col-sm-0">:</td>

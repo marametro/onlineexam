@@ -24,28 +24,18 @@ class QmController
 			case 'quest_definition' :
 				$title = 'Definition Soal';
 			break;
-
 			case 'tryout_kind' :
 				$title = 'Jenis Tryout';
 			break;
-
 			case 'tryout' :
 				$title = 'Tryout';
 			break;
-
 			case 'quest':
 			case 'quest_backup':
 				$title = 'Soal';
 				$dataTeacher =  $this->ModelUM->getFilterDT('user','elearn_um_role_id','3');
 				$dataStudySum =  $this->Model->getAll('study_sum');
 			break;
-
-			// case 'quest_backup':
-			// 	$title = 'Backup Soal';
-			// 	$dataTeacher =  $this->ModelUM->getFilterDT('user','elearn_um_role_id','3');
-			// 	$dataStudySum =  $this->Model->getAll('study_sum');
-			// break;
-
 			case 'manage':
 				$title = 'Manajemen Soal';
 			break;

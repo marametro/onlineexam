@@ -373,49 +373,58 @@
 						?>
 					</select>
 				</div>
-			</div>
+		</div>
 	    <div class="form-group">
+		<div class="col-md-12">
+          <div class="box box-default collapsed-box">
+            <div class="box-header with-border">
+              	<h3 class="box-title">Data Sekolah</h3>
+              	<div class="box-tools pull-right">
+	                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+	                </button>
+                </div>
+            </div>
+ 			<div class="box-body">
 				<label for="ddQuestCat" class="col-sm-1 control-label">Sekolah</label>
 				<div class="col-sm-11">
-		    	<table class="table table-bordered table-striped  table-hover">
-	  				<tr>
-				    	<?php
-				    		$noSchool=1;
-								foreach($dataSchool as $key)
-								{?>
-
-										<!-- for get checked class sub  -->
-										<?php 
-											$checked="";
-											$vals = array_values($dataSchoolArray);
-											$fields = array_keys($dataSchoolArray);
-											$i = 0;
-											foreach ($fields as $col){
-												$vals2 = array_values($vals[$i]);
-												$fields2 = array_keys($vals[$i]);
-
-												if ($key->id==$vals2[4]){
-													$checked="checked='true'";
-												}
-
-												$i++;
-											}
+			    	<table class="table table-bordered table-striped  table-hover">
+		  				<tr>
+					    	<?php
+					    		$noSchool=1;
+									foreach($dataSchool as $key)
+									{
 										?>
-
-			    					<td>
-											<label class="checkbox-inline class_sub">
-											<input type="checkbox" id="school" name="school[]" value="<?php echo $key->id?>" <?php echo $checked ?> >
-											<?php echo $key->name ?>
-											</label>
-										</td>
-										<?php if ($noSchool%8==0){ echo "</tr><tr>";} ?>		
-							<?php
-								$noSchool = $noSchool +1;
-							 }?>
+										<?php 
+												$checked="";
+												$vals = array_values($dataSchoolArray);
+												$fields = array_keys($dataSchoolArray);
+												$i = 0;
+												foreach ($fields as $col){
+													$vals2 = array_values($vals[$i]);
+													$fields2 = array_keys($vals[$i]);
+													if ($key->id==$vals2[4]){
+														$checked="checked='true'";
+													}
+													$i++;
+												}
+										?>
+				    					<td>
+												<label class="checkbox-inline class_sub">
+												<input type="checkbox" id="school" name="school[]" value="<?php echo $key->id?>" <?php echo $checked ?> >
+												<?php echo $key->name ?>
+												</label>
+											</td>
+											<?php if ($noSchool%8==0){ echo "</tr><tr>";} ?>		
+								<?php
+									$noSchool = $noSchool +1;
+								 }?>
+							</tr>
 					</table>
 				</div>
 			</div>
-
+			</div>
+			</div>
+			</div>
 			<div class=" box-header box-footer with-border">
 				<div class="form-group">
 					<div class="col-sm-12 rows-sm-2">
@@ -425,6 +434,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="form-group">
 			</div>
 			<div class="form-group">
@@ -468,19 +478,23 @@
 						    </td>
 						    <td>
 						    	<table class="table table-bordered table-striped  table-hover">
+					    			<tr>
+										<td class="col-sm-2"><b>Pertanyaan</b></td>
+			    					</tr>
 						    		<tr>
-						    			<td class="col-sm-2">Pertanyaan</td>
-						    			<td class="col-sm-0">:</td>
 						    			<td class="col-sm-12"><?PHP echo $key->question; ?></td>
 						    		</tr>
 						  		</table>
 						    	<table class="table table-bordered table-striped  table-hover">
 						    		<tr>
+			    						<td colspan="3"><b>Pilihan Jawaban</b></td>
+			    					</tr>
+						    		<tr>
 						    			<td class="col-sm-2">A</td>
 						    			<td class="col-sm-0">:</td>
 						    			<td class="col-sm-12"><?PHP echo $key->choice_a; ?></td>
 						    		</tr>
-										<tr>
+									<tr>
 						    			<td>B</td>
 						    			<td>:</td>
 						    			<td><?PHP echo $key->choice_b; ?></td>

@@ -452,6 +452,7 @@
 </div>
 
 <script>
+
   $(function () {
     $('.datatables').DataTable({
       "paging": true,
@@ -460,12 +461,7 @@
       "ordering": true,
       "info": true,
       "autoWidth": true,
-      "pageLength": 50,
-      // "aoColumns": [
-      //               { "sClass": "center" },
-      //               { "sClass": "left" },
-      //               { "sClass": "right" }
-      //              ]
+      "pageLength": 100,
     });	
 	$(".select2").select2();
 

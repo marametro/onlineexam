@@ -24,10 +24,8 @@
 	<div class="box-body">
 		<input type="hidden" id="page" name="page" value="<?php echo $_GET['page']; ?>"> 
 		<input type="hidden" id="userid" name="userid" value="<?php echo $_SESSION['iduser']; ?>"> 
-	  <table id="dataTable" class="table table-bordered table-striped  table-hover">
-	  	
-	  	<?php include "list_data.php"; ?>
-	  
+	  <table id="dataTable" class="table table-bordered table-striped datatables">
+	  		<?php include "list_data.php"; ?>
 	  </table>
 	</div>
 </div>
