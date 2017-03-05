@@ -86,7 +86,11 @@ class QmController
 				$dataStudy =  $this->ModelMD->getAll('study');
 				$definition = (isset($data->elearn_qm_quest_definition_id)) ? $data->elearn_qm_quest_definition_id : '';
 				$dataDefinition =  $this->Model->getAll('quest_definition');
-
+				$dataSchool =  $this->ModelMD->getAll('school');
+				$dataSchoolArray = (isset($data->id)) ? $this->Model->getFilter("tryout_school","elearn_qm_tryout_id",$id) : $this->Model->getFilter("tryout_school","elearn_qm_tryout_id","NULL");
+				//$dataQuestArray = (isset($data->id)) ? $this->Model->getFilter("manage_quest","elearn_qm_manage_id",$id) : $this->Model->getFilter("manage_quest","elearn_qm_manage_id","NULL");
+				$dataClass = $this->Model->getAllMasterData("class");
+				$dataClassArray = (isset($data->id)) ? $this->Model->getFilter("tryout_class","elearn_qm_tryout_id",$id) : $this->Model->getFilter("tryout_class","elearn_qm_tryout_id","NULL");
 			break;
 
 			case 'quest':
@@ -102,9 +106,14 @@ class QmController
 				$answer = (isset($data->answer)) ? $data->answer : 'A';
 				// $dataStudy =  $this->Model->getAll('study_sum');
 				$dataStudy =  $this->ModelMD->getAll('study');
+				$dataSubStudy = $this->Model->getAllMasterData("sub_study");
 				
 				$dataCreatedby =  $this->Model->getAll('study_sum');
 				$photo_url = (isset($data->photo_url)) ? $data->photo_url : '';
+				$bab = (isset($data->bab)) ? $data->bab : '';
+				$dataClass = $this->Model->getAllMasterData("class");
+				$dataClassArray = (isset($data->id)) ? $this->Model->getFilter("tryout_class","elearn_qm_tryout_id",$id) : $this->Model->getFilter("tryout_class","elearn_qm_tryout_id","NULL");
+
 			break;
 
 			case 'quest_backup' :

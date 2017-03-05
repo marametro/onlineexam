@@ -169,20 +169,15 @@ $(document).ready(function(){
       break;
 	    case 'manage':
 	    	if (page=='manage') title = 'Manajemen Soal';
-        var cu_elearn_qm_tryout_id = $('#cu_elearn_qm_tryout_id').val();
-				if(cu_elearn_qm_tryout_id == "") 
-				{
-					alert(title+' name is empty, Please Enter a value');
-					return;
-				}
-				var fields = $("input[name='school[]']").serializeArray(); 
-		    if (fields.length === 0) 
-		    { 
-		        alert('Sub kelas belum di pilih, minimal pilih salah satu'); 
-		        return false;
-		    } 
-		    
-				var fields2 = $("input[name='quest[]']").serializeArray(); 
+        	
+        	var cu_elearn_qm_tryout_id = $('#cu_elearn_qm_tryout_id').val();
+			if(cu_elearn_qm_tryout_id == "") 
+			{
+				alert(title+' name is empty, Please Enter a value');
+				return;
+			}
+
+			var fields2 = $("input[name='quest[]']").serializeArray(); 
 		    if (fields2.length === 0) 
 		    { 
 		        alert('Soal belum di pilih'); 
@@ -226,6 +221,20 @@ $(document).ready(function(){
 
 });
 
+
+ function showSubMapel()
+ {
+	var cu_elearn_md_study_id_quest = document.getElementById("cu_elearn_md_study_id_quest").value;
+	$.ajax({
+	url: "../model/QuestionsManagement/data_ajax.php?cu_elearn_md_study_id_quest="+ cu_elearn_md_study_id_quest +"",
+	success: function(response){
+		
+	$("#cu_elearn_md_sub_study_id").html(response);
+	},
+	dataType:"html"
+	});
+	return false;
+ }
 
 function SelectTeacher(me)
 {

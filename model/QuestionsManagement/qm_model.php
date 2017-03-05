@@ -143,7 +143,7 @@ class QmModel {
 	public function getByIDTryout($tbl,$id)
 	{
 		$query = "select 
-								b.name kind, c.name study, a.* 
+							b.name kind, c.name study, a.* 
 							from elearn_qm_".$tbl." a
 							inner join elearn_qm_tryout_kind b on a.elearn_qm_tryout_kind_id = b.id
 							inner join elearn_md_study c on a.elearn_md_study_id = c.id 
@@ -242,6 +242,14 @@ class QmModel {
 		return $result;
 	}
 
+	public function getAllMasterData($tbl)
+	{
+		$query = "SELECT * FROM elearn_md_".$tbl." WHERE isdeleted=0";
+		$result = $this->db->getDataTable($query);
+		
+		return $result;
+	}
+
 	public function create($tbl,$data)
 	{
 		$result = $this->db->insert("elearn_qm_".$tbl,$data);
@@ -288,6 +296,7 @@ class QmModel {
 	
 	/* Region Front Eend Mara*/
 	
+
 	public function getAllTryout()
 	{
 		$query="SELECT COUNT(id) as total FROM elearn_qm_tryout WHERE isdeleted='0' AND elearn_md_study_id !='0'";

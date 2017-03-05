@@ -8,6 +8,8 @@
 	$page = $_POST['page'];
 	$action = $_POST['action'];
 	$userid = $_POST['userid'];
+
+
 	
 	if ($action =='delete') 
 	{
@@ -82,26 +84,11 @@
 							$date_end = date('Y-m-d',strtotime($_POST['cu']['date_end']));
 							$result = $model->executeNonQuery("call elearn_qm_quest_backup('".$date_start."','".$date_end."') ");
 						break;
-						case 'tryout':
-							$_POST['cu']['date_start'] = date('Y-m-d',strtotime($_POST['cu']['date_start']));
-							$_POST['cu']['date_end'] = date('Y-m-d',strtotime($_POST['cu']['date_end']));
-						break;
 						case 'manage':
 							$_POST['cu']['code'] = $model->getCode($page);
 							$result = $model->create($page,$_POST['cu']);
 							$parentID = $model->getLastID($page);
 
-							$vals = array_values($_POST['school']);
-							$fields = array_keys($_POST['school']);
-							$i = 0;
-							foreach ($fields as $col){
-								$dataSchool = array(
-									'elearn_qm_manage_id' => $parentID,
-									'elearn_md_school_id' => $vals[$i]
-								);
-								$result = $model->create("manage_school",$dataSchool);
-								$i++;
-							}
 
 							$vals = array_values($_POST['quest']);
 							$fields = array_keys($_POST['quest']);
@@ -115,6 +102,37 @@
 								$i++;
 							}
 						break;
+						case 'tryout':			
+							$_POST['cu']['date_start'] = date('Y-m-d',strtotime($_POST['cu']['date_start']));
+							$_POST['cu']['date_end'] = date('Y-m-d',strtotime($_POST['cu']['date_end']));					
+							$result = $model->create($page,$_POST['cu']);
+							$parentID = $model->getLastID($page);
+
+							$vals = array_values($_POST['school']);
+							$fields = array_keys($_POST['school']);
+							$i = 0;
+							foreach ($fields as $col){
+									$dataSchool = array(
+										'elearn_qm_tryout_id' => $parentID,
+										'elearn_md_school_id' => $vals[$i]
+									);
+									$result = $model->create("tryout_school",$dataSchool);
+									$i++;
+							}
+
+							$vals = array_values($_POST['class']);
+							$fields = array_keys($_POST['class']);
+							$i = 0;
+							foreach ($fields as $col){
+									$dataClass = array(
+										'elearn_qm_tryout_id' => $parentID,
+										'elearn_md_class_id' => $vals[$i]
+									);
+									$result = $model->create("tryout_class",$dataClass);
+									$i++;
+							}
+
+						break;						
 					}
 
 					switch($page)  
@@ -122,7 +140,6 @@
 						
 						case 'tryout_kind':
 						case 'quest':
-						case 'tryout':
 							$result = $model->create($page,$_POST['cu']);
 						break;
 					}
@@ -193,20 +210,37 @@
 					case 'tryout':
 						$_POST['cu']['date_start'] = date('Y-m-d',strtotime($_POST['cu']['date_start']));
 						$_POST['cu']['date_end'] = date('Y-m-d',strtotime($_POST['cu']['date_end']));
-					break;
-					case 'manage':
-						$result = $model->deletePermanent("manage_school","elearn_qm_manage_id",$id);
+
+
+						$result = $model->deletePermanent("tryout_school","elearn_qm_tryout_id",$id);
 						$vals = array_values($_POST['school']);
 						$fields = array_keys($_POST['school']);
 						$i = 0;
 						foreach ($fields as $col){
-							$dataSubClass = array(
-								'elearn_qm_manage_id' => $id,
+							$data = array(
+								'elearn_qm_tryout_id' => $id,
 								'elearn_md_school_id' => $vals[$i]
 							);
-							$result = $model->create("manage_school",$dataSubClass);
+							$result = $model->create("tryout_school",$data);
 							$i++;
 						}
+
+						$result = $model->deletePermanent("tryout_class","elearn_qm_tryout_id",$id);
+						$vals = array_values($_POST['class']);
+						$fields = array_keys($_POST['class']);
+						$i = 0;
+						foreach ($fields as $col){
+							$data = array(
+								'elearn_qm_tryout_id' => $id,
+								'elearn_md_class_id' => $vals[$i]
+							);
+							$result = $model->create("tryout_class",$data);
+							$i++;
+						}
+
+					break;
+					case 'manage':
+						
 
 						$result = $model->deletePermanent("manage_quest","elearn_qm_manage_id",$id);
 						$vals = array_values($_POST['quest']);
@@ -229,5 +263,6 @@
 			}
 		}
 	}
+
 	
 ?>

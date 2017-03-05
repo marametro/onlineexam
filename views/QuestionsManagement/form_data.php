@@ -1,5 +1,7 @@
 
 <?php $page=strtolower($_GET['page']); ?>
+<?php $action=strtolower($_GET['action']); ?>
+
 
 <?php switch($page): 
 
@@ -60,32 +62,32 @@
 	<?php case 'tryout': ?>
 		<div class="col-sm-8">
     	<div class="form-group">
-				<label for="txtName" class="col-sm-3 control-label">Judul</label>
-				<div class="col-sm-8">
-					<input type="text" class="form-control" id="cu_title" name="cu[title]" value="<?PHP echo $txtTitle; ?>">
-				</div>
+			<label for="txtName" class="col-sm-3 control-label">Judul</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" id="cu_title" name="cu[title]" value="<?PHP echo $txtTitle; ?>">
+			</div>
 		</div>
     	<div class="form-group">
-				<label for="ddCat" class="col-sm-3 control-label">Jenis Tryout</label>
-				<div class="col-sm-6">
-					<select class="form-control select2" style="width: 100%;height:100%; " id="cu_elearn_qm_tryout_kind_id" name="cu[elearn_qm_tryout_kind_id]">
-						<?PHP
-							
-							foreach($dataCat as $key)
-							{
-								$selected="";
-								($data->elearn_qm_tryout_kind_id==$key->id)? $selected="selected" : $selected="";  
-								echo "<option value=$key->id $selected>$key->name</option>";
-							}
-							echo "</select>";
-						?>
-					</select>
-				</div>
+			<label for="ddCat" class="col-sm-3 control-label">Jenis Tryout</label>
+			<div class="col-sm-6">
+				<select class="form-control select2" style="width: 100%;height:100%; " id="cu_elearn_qm_tryout_kind_id" name="cu[elearn_qm_tryout_kind_id]">
+					<?PHP
+						
+						foreach($dataCat as $key)
+						{
+							$selected="";
+							($data->elearn_qm_tryout_kind_id==$key->id)? $selected="selected" : $selected="";  
+							echo "<option value=$key->id $selected>$key->name</option>";
+						}
+						echo "</select>";
+					?>
+				</select>
+			</div>
 		</div>
 		<div class="form-group">
 			<label for="ddQuestCat" class="col-sm-3 control-label">Mata Pelajaran</label>
 			<div class="col-sm-6">
-				<select class="form-control select2" style="width: 100%;height:100%; " id="cu_elearn_md_study_id" name="cu[elearn_md_study_id]">
+				<select class="form-control select2" style="width: 100%;height:100%; " id="cu_elearn_md_study_id" name="cu[elearn_md_study_id]" >
 					<?PHP
 						echo "<option>PILIH</option>";
 						foreach($dataStudy as $key)
@@ -173,6 +175,108 @@
 					<input type="number" class="form-control" id="cu-amount_quest" name="cu[amount_quest]" value="<?PHP echo $amount_quest; ?>">
 				</div>
 			</div>
+		<div class="form-group">
+		<div>
+          	<div class="box box-default collapsed-box">
+	            <div class="box-header with-border">
+	              	<h3 class="box-title">Data Sekolah Yang Di Ujikan</h3>
+	              	<div class="box-tools pull-right">
+		                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+		                </button>
+	                </div>
+	            </div>
+ 			<div class="box-body">
+				<div class="col-sm-10">
+			    	<table class="table table-bordered table-striped table-hover datatables">
+		  				<tr>
+					    	<?php
+					    		$noSchool=1;
+									foreach($dataSchool as $key)
+									{
+										?>
+										<?php 
+												$checked="";
+												$vals = array_values($dataSchoolArray);
+												$fields = array_keys($dataSchoolArray);
+												$i = 0;
+												foreach ($fields as $col){
+													$vals2 = array_values($vals[$i]);
+													$fields2 = array_keys($vals[$i]);
+													if ($key->id==$vals2[4]){
+														$checked="checked='true'";
+													}
+													$i++;
+												}
+										?>
+				    					<td>
+												<label class="checkbox-inline class_sub">
+												<input type="checkbox" id="school" name="school[]" value="<?php echo $key->id?>" <?php echo $checked ?> >
+												<?php echo $key->name ?>
+												</label>
+											</td>
+											<?php if ($noSchool%7==0){ echo "</tr><tr>";} ?>		
+								<?php
+									$noSchool = $noSchool +1;
+								 }?>
+							</tr>
+					</table>
+				</div>
+			</div>
+			</div>
+			</div>
+			</div>
+
+			<div class="form-group">
+		<div>
+          	<div class="box box-default collapsed-box">
+	            <div class="box-header with-border">
+	              	<h3 class="box-title">Data Kelas Yang Di Ujikan</h3>
+	              	<div class="box-tools pull-right">
+		                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+		                </button>
+	                </div>
+	            </div>
+ 			<div class="box-body">
+				<div class="col-sm-10">
+			    	<table class="table table-bordered table-striped table-hover datatables">
+		  				<tr>
+					    	<?php
+					    		$noSchool=1;
+									foreach($dataClass as $key)
+									{
+										?>
+										<?php 
+												$checked="";
+												$vals = array_values($dataClassArray);
+												$fields = array_keys($dataClassArray);
+												$i = 0;
+												foreach ($fields as $col){
+													$vals2 = array_values($vals[$i]);
+													$fields2 = array_keys($vals[$i]);
+													if ($key->id==$vals2[4]){
+														$checked="checked='true'";
+													}
+													$i++;
+												}
+										?>
+				    					<td>
+												<label class="checkbox-inline class_sub">
+												<input type="checkbox" id="class" name="class[]" value="<?php echo $key->id?>" <?php echo $checked ?> >
+												<?php echo $key->name ?>
+												</label>
+											</td>
+											<?php if ($noSchool%7==0){ echo "</tr><tr>";} ?>		
+								<?php
+									$noSchool = $noSchool +1;
+								 }?>
+							</tr>
+					</table>
+				</div>
+			</div>
+			</div>
+			</div>
+			</div>
+
 			<div class="form-group">
 			  <textarea class="form-control" rows="3" id="cu_attention" placeholder="Pesan dan Saran..." name="cu[attention]"><?PHP echo $attention; ?></textarea>
 			</div>
@@ -190,7 +294,9 @@
 			<div class="form-group">
 				<label for="cu_elearn_md_study_id" class="col-sm-4 control-label">Mata Pelajaran</label>
 				<div class="col-sm-6">
-					<select class="form-control select2" style="width: 100%;height:100%; " id="cu_elearn_md_study_id" name="cu[elearn_md_study_id]">
+					<select class="form-control select2" style="width: 100%;height:100%; " 
+					id="cu_elearn_md_study_id_quest" name="cu[elearn_md_study_id]" onChange="showSubMapel()">
+					<option value=''>-- Pilih Mata Pelajaran --</option>
 						<?PHP
 							foreach($dataStudy as $key)
 							{
@@ -203,40 +309,108 @@
 					</select>
 				</div>
 			</div>
-			<div class="form-group">
-				<label for="radio" class="col-sm-4 control-label">Level</label>
-				<div class="col-sm-6">
-					<input type="radio" name="cu[level]" class="minimal-red" value="hard" <?php echo ($level=='hard')?'checked':'' ?>> Hard
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="cu[level]" class="minimal-red" value="medium" <?php echo ($level=='medium')?'checked':'' ?>> Medium
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="cu[level]" class="minimal-red" value="easy" <?php echo ($level=='easy')?'checked':'' ?>> Easy
-				</div>
+		<?PHP if ($action =='edit') {  ?>
+		<div class="form-group">
+			<label for="cu_elearn_md_sub_study_id" class="col-sm-4 control-label">Sub Mata Pelajaran</label>
+			<div class="col-sm-6">
+			<select class="form-control select2" style="width: 100%;height:100%;" id="cu_elearn_md_sub_study_id" name="cu[elearn_md_sub_study_id]">
+				<?PHP
+					foreach($dataSubStudy as $key)
+					{
+						$selected="";
+						($data->elearn_md_sub_study_id==$key->id)? $selected="selected" :$selected="";  
+						echo "<option value=$key->id $selected>$key->name</option>";
+					}
+					echo "</select>";
+				?>
+			</select>
 			</div>
+		</div>
+		<?PHP }else { ?>
+		<div class="form-group">
+			<label for="cu_elearn_md_sub_study_id" class="col-sm-4 control-label">Sub Mata Pelajaran</label>
+			<div class="col-sm-6">
+				<select class="form-control select2" style="width: 100%;height:100%;" 
+								id="cu_elearn_md_sub_study_id" name="cu[elearn_md_sub_study_id]">
+					
+				</select>
+			</div>
+		</div>
+		<?PHP } ?>
+		<div class="form-group">
+			<label for="cu_name" class="col-sm-4 control-label">Bab</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" id="cu_bab" name="cu[bab]" value="<?PHP echo $bab; ?>">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="cu_name" class="col-sm-4 control-label">Di Buat Untuk Kelas</label>
+			<div class="col-sm-6">
+			<?php
+				$noClass=1;
+				foreach($dataClass as $key)
+				{
+				?>
+					<?php 
+					$checked="";
+					$vals = array_values($dataClassArray);
+					$fields = array_keys($dataClassArray);
+					$i = 0;
+					foreach ($fields as $col){
+						$vals2 = array_values($vals[$i]);
+						$fields2 = array_keys($vals[$i]);
+						if ($key->id==$vals2[4]){
+							$checked="checked='true'";
+						}
+						$i++;
+					}
+					?>
+					<td>
+						<label class="checkbox-inline class_sub">
+						<input type="checkbox" id="class" name="class[]" value="<?php echo $key->id?>" <?php echo $checked ?> >
+						<?php echo $key->name ?>
+						</label>
+					</td>
+					<?php if ($noClass%7==0){ echo "</tr><tr>";} ?>		
+					<?php
+					$noClass = $noClass +1;
+			}?>
+			</div>
+		</div>
 		</div>
 		<div class="col-sm-6">
 		</div>
 		<div class="col-sm-6">
 	    <div class="form-group">
-				<label for="radio" class="col-sm-4 control-label">Kunci Jawaban</label>
-				<div class="col-sm-6">
-					<input type="radio" name="cu[answer]" class="minimal-red" value="A" <?php echo ($answer=='A')?'checked':'' ?>> A 
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="cu[answer]" class="minimal-red" value="B" <?php echo ($answer=='B')?'checked':'' ?>> B
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="cu[answer]" class="minimal-red" value="C" <?php echo ($answer=='C')?'checked':'' ?>> C
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="cu[answer]" class="minimal-red" value="D" <?php echo ($answer=='D')?'checked':'' ?>> D
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="cu[answer]" class="minimal-red" value="E" <?php echo ($answer=='E')?'checked':'' ?>> E
-				</div>
+			<label for="radio" class="col-sm-4 control-label">Kunci Jawaban</label>
+			<div class="col-sm-6">
+				<input type="radio" name="cu[answer]" class="minimal-red" value="A" <?php echo ($answer=='A')?'checked':'' ?>> A 
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="cu[answer]" class="minimal-red" value="B" <?php echo ($answer=='B')?'checked':'' ?>> B
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="cu[answer]" class="minimal-red" value="C" <?php echo ($answer=='C')?'checked':'' ?>> C
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="cu[answer]" class="minimal-red" value="D" <?php echo ($answer=='D')?'checked':'' ?>> D
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="cu[answer]" class="minimal-red" value="E" <?php echo ($answer=='E')?'checked':'' ?>> E
 			</div>
-			<div class="form-group">
-				<label for="fupload" class="col-sm-4 control-label">Gambar</label>
-				<div class="col-sm-6">
-					<input type="file" id="fupload" name="fupload">
-				</div>
+		</div>
+		<div class="form-group">
+			<label for="radio" class="col-sm-4 control-label">Level</label>
+			<div class="col-sm-6">
+				<input type="radio" name="cu[level]" class="minimal-red" value="hard" <?php echo ($level=='hard')?'checked':'' ?>> Hard
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="cu[level]" class="minimal-red" value="medium" <?php echo ($level=='medium')?'checked':'' ?>> Medium
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="cu[level]" class="minimal-red" value="easy" <?php echo ($level=='easy')?'checked':'' ?>> Easy
 			</div>
+		</div>
+		<div class="form-group">
+			<label for="fupload" class="col-sm-4 control-label">Gambar</label>
+			<div class="col-sm-6">
+				<input type="file" id="fupload" name="fupload">
+			</div>
+		</div>
 		</div>
 		<div class="col-sm-10">
 		</div>
@@ -249,44 +423,6 @@
 			</div>
 		</div>
 		<div class="col-sm-8">
-			<!--<script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>-->
-			
-			 <script>
-			
-		     // $('#cu_elearn_md_study_id').select2();
-			   // $(function () {
-				 // CKEDITOR.replace('cu_question');
-				 // CKEDITOR.replace('cu_choice_a');
-				 // CKEDITOR.replace('cu_choice_b');
-				 // CKEDITOR.replace('cu_choice_c');
-				 // CKEDITOR.replace('cu_choice_d');
-				 // CKEDITOR.replace('cu_choice_e');
-				 // CKEDITOR.replace('cu_explanation');
-				// $(".textarea").wysihtml5();
-				// $(".textarea").wysihtml5({
-			
-			// "events": {
-			// "load": function() 
-			// {
-			    // console.log("Loaded!");
-			    // var $iframe = $(this.composer.iframe);
-			    // var $body = $(this.composer.element);
-			       // $body.css({
-			        // 'min-height': 0,
-					// 'line-height': '20px',
-			        // 'overflow': 'hidden',
-			       // });
-					// var scrollHeightInit = $body[0].scrollHeight;
-					// console.log("scrollHeightInit", scrollHeightInit);
-					// var bodyHeightInit = $body.height();
-					// console.log("bodyHeightInit", bodyHeightInit);
-					// var heightInit = Math.min(scrollHeightInit, bodyHeightInit);
-					// $iframe.height(heightInit);
-			 // }
-			   // }
-			// });
-			   // });
-			 </script>
 			
 			<div class="form-group">
 			  <h4 class="box-title"><b>Pertanyaan :</b></h4>
@@ -374,57 +510,7 @@
 					</select>
 				</div>
 		</div>
-	    <div class="form-group">
-		<div class="col-md-12">
-          <div class="box box-default collapsed-box">
-            <div class="box-header with-border">
-              	<h3 class="box-title">Data Sekolah</h3>
-              	<div class="box-tools pull-right">
-	                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-	                </button>
-                </div>
-            </div>
- 			<div class="box-body">
-				<label for="ddQuestCat" class="col-sm-1 control-label">Sekolah</label>
-				<div class="col-sm-11">
-			    	<table class="table table-bordered table-striped  table-hover">
-		  				<tr>
-					    	<?php
-					    		$noSchool=1;
-									foreach($dataSchool as $key)
-									{
-										?>
-										<?php 
-												$checked="";
-												$vals = array_values($dataSchoolArray);
-												$fields = array_keys($dataSchoolArray);
-												$i = 0;
-												foreach ($fields as $col){
-													$vals2 = array_values($vals[$i]);
-													$fields2 = array_keys($vals[$i]);
-													if ($key->id==$vals2[4]){
-														$checked="checked='true'";
-													}
-													$i++;
-												}
-										?>
-				    					<td>
-												<label class="checkbox-inline class_sub">
-												<input type="checkbox" id="school" name="school[]" value="<?php echo $key->id?>" <?php echo $checked ?> >
-												<?php echo $key->name ?>
-												</label>
-											</td>
-											<?php if ($noSchool%8==0){ echo "</tr><tr>";} ?>		
-								<?php
-									$noSchool = $noSchool +1;
-								 }?>
-							</tr>
-					</table>
-				</div>
-			</div>
-			</div>
-			</div>
-			</div>
+	    
 			<div class=" box-header box-footer with-border">
 				<div class="form-group">
 					<div class="col-sm-12 rows-sm-2">
@@ -439,7 +525,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-12">
-					<table class="table table-bordered table-striped  table-hover">
+					<table class="table table-bordered table-striped  table-hover datatables">
 					<!-- <table id="dataTable" class="table table-bordered table-striped  table-hover datatables" style='font-size:12px;'> -->
 				  	<thead>
 							<tr>
