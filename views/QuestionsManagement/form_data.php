@@ -346,35 +346,18 @@
 		<div class="form-group">
 			<label for="cu_name" class="col-sm-4 control-label">Di Buat Untuk Kelas</label>
 			<div class="col-sm-6">
-			<?php
-				$noClass=1;
-				foreach($dataClass as $key)
-				{
-				?>
-					<?php 
-					$checked="";
-					$vals = array_values($dataClassArray);
-					$fields = array_keys($dataClassArray);
-					$i = 0;
-					foreach ($fields as $col){
-						$vals2 = array_values($vals[$i]);
-						$fields2 = array_keys($vals[$i]);
-						if ($key->id==$vals2[4]){
-							$checked="checked='true'";
-						}
-						$i++;
+			<select class="form-control select2" style="width: 100%;height:100%;" id="cu_elearn_md_class_id" name="cu[elearn_md_class_id]">
+				<?PHP
+					foreach($dataClass as $key)
+					{
+						$selected="";
+						($data->elearn_md_class_id==$key->id)? $selected="selected" :$selected="";  
+						echo "<option value=$key->id $selected>$key->name</option>";
 					}
-					?>
-					<td>
-						<label class="checkbox-inline class_sub">
-						<input type="checkbox" id="class" name="class[]" value="<?php echo $key->id?>" <?php echo $checked ?> >
-						<?php echo $key->name ?>
-						</label>
-					</td>
-					<?php if ($noClass%7==0){ echo "</tr><tr>";} ?>		
-					<?php
-					$noClass = $noClass +1;
-			}?>
+					echo "</select>";
+				?>
+			</select>
+			
 			</div>
 		</div>
 		</div>

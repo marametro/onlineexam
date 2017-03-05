@@ -112,8 +112,7 @@ class QmController
 				$photo_url = (isset($data->photo_url)) ? $data->photo_url : '';
 				$bab = (isset($data->bab)) ? $data->bab : '';
 				$dataClass = $this->Model->getAllMasterData("class");
-				$dataClassArray = (isset($data->id)) ? $this->Model->getFilter("tryout_class","elearn_qm_tryout_id",$id) : $this->Model->getFilter("tryout_class","elearn_qm_tryout_id","NULL");
-
+				
 			break;
 
 			case 'quest_backup' :
