@@ -5,7 +5,9 @@ RewriteRule ^register$ index.php?pages=register [L]
 RewriteRule ^dashboard$ dashboard.php?pages=dashboard [L]
 RewriteRule ^profile$ dashboard.php?pages=profile [L]
 RewriteRule ^logout$ dashboard.php?pages=logout [L]
+RewriteRule ^tryout+(.*)-(.*)$ dashboard.php?pages=tryout&id=$1 [L]
 RewriteRule ^tryoutboxchild$ dashboard.php?pages=tryout_box_child [L]
+
 
 RewriteRule ^paketbyid-(.*)-(.*)\.html$ home.php?halaman=paketbyid&id=$1 [L]
 RewriteRule ^orderpaket-(.*)-(.*)\.html$ home.php?halaman=orderpaket&id=$1 [L]

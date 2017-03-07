@@ -2,7 +2,8 @@
 	ob_start();
 	require_once 'mssql/config.php';
 	require_once 'helper/datetime.php';
-	
+	require_once 'helper/Encryption.php';
+
 	if (isset($_GET['pages']))
 	{
 		if ($_GET['pages']=='login')
@@ -26,9 +27,19 @@
 			require_once"model/QuestionsManagement/qm_model.php"; 
 			require_once"model/Participant/pc_model.php"; 
 			require_once"views/account/welcome.php";
+			require_once"views/Quiz/view_tryout.php";
+			/*
 			require_once"views/Quiz/quiz_box.php";
 			require_once"views/Quiz/tryout_box.php";
 			require_once"views/Participant/members.php";
+			*/
+		}
+
+		if ($_GET['pages']=='tryout')
+		{	
+			
+			require_once"model/QuestionsManagement/qm_model.php"; 
+			require_once"views/Quiz/tryout_box_child.php";
 		}
 		if ($_GET['pages']=='tryout_box_child')
 		{	

@@ -304,6 +304,14 @@ class QmModel {
 		return $result;
 	}
 	
+
+	public function getAllTryoutKind()
+	{
+		$query="SELECT * FROM elearn_qm_tryout_kind WHERE isdeleted='0'";
+		$result = $this->db->getDataTable($query);
+		return $result;
+	}
+
 	public function getAllTryoutGroupByStudy()
 	{
 		$query="SELECT * FROM elearn_qm_tryout WHERE elearn_md_study_id !='0' GROUP BY elearn_md_study_id";

@@ -27,7 +27,6 @@
 			$_SESSION['login'] = TRUE;
 			$_SESSION['username']=$data->username;
 			$_SESSION['fullname']=$data->name;
-		
 		}
 		//echo $login;
 		/*$_SESSION['login'] = TRUE;
