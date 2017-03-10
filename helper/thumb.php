@@ -12,6 +12,9 @@ function FotoUpload($fupload_name,$tbl){
     case 'user':
       $vdir_upload = "../../Pictures/user/";
     break;
+     case 'tryout_kind':
+      $vdir_upload = "../../Pictures/icons/";
+    break;
 
     default:
       $vdir_upload = "../../fotoprofile/";

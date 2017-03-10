@@ -67,6 +67,7 @@ class QmController
 			case 'tryout_kind' :
 				$title = 'Jenis Tryout';
 				$name = (isset($data->name)) ? $data->name : '';
+				$icons = (isset($data->icons)) ? $data->icons : '';
 			break;
 
 			case 'tryout' :

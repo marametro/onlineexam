@@ -15,8 +15,8 @@
 			<?php break; ?>
 
 			<?PHP case 'tryout_kind': ?>
-			    <th class="center">Jenis Try Out</th>
-			    <th>Create By</th>
+			    <th>Jenis Try Out</th>
+			    <th>Icons</th>
 		    	<th>Create Date</th>
 			<?php break; ?>
 
@@ -78,21 +78,24 @@
 				<td><?PHP echo $key->unworked; ?></td>
 			<?php break; ?>
 			
-			<?PHP case 'tryout_kind': ?>
+			<?PHP case 'tryout_kind': 
+				$icons = $key->icons ? $key->icons : '';
+			?>
+
 					<td><?PHP echo $numbers; ?></td>
-			    <td><?PHP echo $key->name; ?></td>
-			    <td><?PHP echo $key->create_by; ?></td>
+				    <td><?PHP echo $key->name; ?></td>
+				    <td><img src="../Pictures/icons/small_<?php echo $icons; ?>" class="img-circle" with="100px" height="80px"></td>
 					<td><?PHP echo $key->createdate; ?></td>
 			<?php break; ?>
 
 			<?php case 'tryout': ?>
 					<td><?PHP echo $numbers; ?></td>
-			    <td><?PHP echo $key->title; ?></td>
-			    <td><?PHP echo $key->cat; ?></td>
-			    <td><?PHP echo $key->study; ?></td>
-			    <td><?PHP echo $key->min_value; ?></td>
-			    <td><?PHP echo $key->create_by; ?></td>
-				<td><?PHP echo $key->createdate; ?></td>
+				    <td><?PHP echo $key->title; ?></td>
+				    <td><?PHP echo $key->cat; ?></td>
+				    <td><?PHP echo $key->study; ?></td>
+				    <td><?PHP echo $key->min_value; ?></td>
+				    <td><?PHP echo $key->create_by; ?></td>
+					<td><?PHP echo $key->createdate; ?></td>
 			<?php break; ?>
 			<?php case 'quest': ?>
 			<?php case 'quest_backup': ?>
@@ -257,15 +260,3 @@
 		}
 	?>
 </tbody>
-
-<style type="text/css">
-	
-.immagess {
-  display: block;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 10px; /* Width of new image */
-  height: 236px; /* Height of new image */
-  padding-left: 180px; /* Equal to width of new image */
-}	
-</style>

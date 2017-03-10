@@ -44,19 +44,25 @@
 	<?PHP case 'tryout_kind': ?>
     <div class="col-sm-8">
 	  	<div class="form-group">
-				<label for="cu_name" class="col-sm-4 control-label">Jenis Tryout</label>
+			<label for="cu_name" class="col-sm-4 control-label">Jenis Tryout</label>
 				<div class="col-sm-6">
 					<input type="hidden" id="name" name="name" value="<?php echo $name; ?>"> 
 					<input type="text" class="form-control" id="cu_name" name="cu[name]" value="<?PHP echo $name; ?>">
 				</div>
-			</div>
-			<div class="box-footer with-border">
-				<div class="form-group">
-				<label class="col-sm-2 control-label"></label>
-				<input  type="submit" id="save" name="save" class="btn btn-primary" Value="Simpan">
-				</div>
+		</div>
+		<div class="form-group">
+			<label for="fupload" class="col-sm-4 control-label">Icons</label>
+			<div class="col-sm-6">
+				<input type="file" id="fupload" name="fupload">
 			</div>
 		</div>
+		<div class="box-footer with-border">
+			<div class="form-group">
+			<label class="col-sm-2 control-label"></label>
+			<input  type="submit" id="save" name="save" class="btn btn-primary" Value="Simpan">
+			</div>
+		</div>
+	</div>
 	<?php break; ?>
 
 	<?php case 'tryout': ?>
@@ -214,7 +220,7 @@
 												<?php echo $key->name ?>
 												</label>
 											</td>
-											<?php if ($noSchool%7==0){ echo "</tr><tr>";} ?>		
+											<?php if ($noSchool%5==0){ echo "</tr><tr>";} ?>		
 								<?php
 									$noSchool = $noSchool +1;
 								 }?>
@@ -265,7 +271,7 @@
 												<?php echo $key->name ?>
 												</label>
 											</td>
-											<?php if ($noSchool%7==0){ echo "</tr><tr>";} ?>		
+											<?php if ($noSchool%5==0){ echo "</tr><tr>";} ?>		
 								<?php
 									$noSchool = $noSchool +1;
 								 }?>
@@ -494,18 +500,17 @@
 				</div>
 		</div>
 	    
-			<div class=" box-header box-footer with-border">
-				<div class="form-group">
-					<div class="col-sm-12 rows-sm-2">
-						<label class="col-sm-2 control-label">PILIH SOAL :</label>
-						<label class="col-sm-9 control-label"></label>
-						<input  type="submit" id="save" name="save" class="btn btn-primary" Value="Publish">
-					</div>
+		<div class=" box-header box-footer with-border">
+			<div class="form-group">
+				<div class="col-sm-12 rows-sm-2">
+					<label class="col-sm-2 control-label">PILIH SOAL :</label>
+					<label class="col-sm-9 control-label"></label>
+					<input  type="submit" id="save" name="save" class="btn btn-primary" Value="Publish">
 				</div>
 			</div>
-
-			<div class="form-group">
-			</div>
+		</div>
+		<div class="form-group">
+		</div>
 			<div class="form-group">
 				<div class="col-sm-12">
 					<table class="table table-bordered table-striped  table-hover datatables">

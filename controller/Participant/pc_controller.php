@@ -33,6 +33,7 @@ class PcController
 		$id 		= (isset($data->id)) ? $data->id : '';
 		$dataAll =  $this->Model->getAll($tbl);
 		
+
 		switch($tbl){
 			case 'participant' :
 				$title = 'Peserta';
@@ -49,6 +50,8 @@ class PcController
 				$elearn_md_class_id =  $this->ModelMD->getAll('class');
 				$username = (isset($data->username)) ? $data->username : '';
 				$password = (isset($data->password)) ? $data->password : '';
+				$elearn_md_participant_from_id = $this->ModelMD->getAll('participant_from');
+
 			break;
 		}
 

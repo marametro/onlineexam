@@ -109,6 +109,23 @@
 					</select>
 				</div>
 			</div>
+			<div class="form-group">
+				<label for="cu_elearn_md_participant_from_id" class="col-sm-4 control-label">Siswa Dari</label>
+				<div class="col-sm-6">
+					<select class="form-control select2" style="width: 100%;height:100%; " id="cu_elearn_md_participant_from_id" name="cu[elearn_md_participant_from_id]">						
+					<?PHP
+							foreach($elearn_md_participant_from_id as $key)
+							{
+								$selected="";
+								($data->elearn_md_participant_from_id==$key->id)? $selected="selected" :$selected="";  
+								echo "<option value=$key->id $selected>$key->name</option>";
+							}
+							echo "</select>";
+						?>
+
+					</select>
+				</div>
+			</div>
 		</div>
 	<?php break; ?>
 

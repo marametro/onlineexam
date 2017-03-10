@@ -67,7 +67,18 @@
 							);	
 							$result = $model->create($page,$datapost);
 						break;
-
+						case 'tryout_kind':
+							$lokasi_file    = $_FILES['fupload']['tmp_name'];
+							$tipe_file      = $_FILES['fupload']['type'];
+							$nama_file      = $_FILES['fupload']['name'];
+							$nama_file_unik = (string)($model->getLastID($page)+1)."_".$nama_file; 
+							if (empty($lokasi_file)==false) 
+							{
+								FotoUpload($nama_file_unik,$page);
+								$_POST['cu']['icons'] = $nama_file_unik;
+							}
+							$result = $model->create($page,$_POST['cu']);
+						break;
 						case 'quest':
 							$lokasi_file    = $_FILES['fupload']['tmp_name'];
 							$tipe_file      = $_FILES['fupload']['type'];
@@ -138,7 +149,6 @@
 					switch($page)  
 					{
 						
-						case 'tryout_kind':
 						case 'quest':
 							$result = $model->create($page,$_POST['cu']);
 						break;
@@ -196,6 +206,18 @@
 				
 						$result = $model->update($page,$datapost,$id);
 					break;
+					case 'tryout_kind':
+						$lokasi_file    = $_FILES['fupload']['tmp_name'];
+						$tipe_file      = $_FILES['fupload']['type'];
+						$nama_file      = $_FILES['fupload']['name'];
+						$nama_file_unik = ((string)($id))."_".$nama_file;  
+						if (empty($lokasi_file)==false) 
+						{
+							FotoUpload($nama_file_unik,$page);
+							$_POST['cu']['icons'] = $nama_file_unik;
+						}
+					break;
+					
 					case 'quest':
 						$lokasi_file    = $_FILES['fupload']['tmp_name'];
 						$tipe_file      = $_FILES['fupload']['type'];

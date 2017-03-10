@@ -41,7 +41,7 @@
 		{
 			if ($data > '0')
 			{
-				echo'isexist';
+				echo $data;
 			}else {
 				
 					$_POST['cu']['createdate'] = date("Y-m-d H:i:s");

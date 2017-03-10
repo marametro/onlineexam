@@ -40,14 +40,14 @@ $(document).ready(function(){
         },
 		
 		}).done(function(data) {
-			
+			alert(data);
 			if (data =="ok" || data =="updateok")
 			{
 				$("#loading-image-add").show();
 				alert('Save successfuly');
 				window.location.href = "?page="+page+"&action=list";
 			}else {
-				alert('Data Isexist');
+				
 				$("#loading-image-add").hide();
 			}
 		});
