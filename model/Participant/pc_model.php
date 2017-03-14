@@ -23,7 +23,7 @@ class PcModel {
 			default:
 				$query = " SELECT b.username create_by, a.* FROM elearn_pc_".$tbl." a 
 										inner join elearn_um_user b on a.createby = b.id
-										WHERE a.isdeleted=0 order by a.name asc ";
+										WHERE a.isdeleted=0 order by a.name desc ";
 
 		}
 

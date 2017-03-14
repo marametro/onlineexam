@@ -82,23 +82,49 @@ $(document).ready(function(){
 	    case 'tryout':
 	    	if (page=='tryout') title = 'Judul Ujian';
 				var cu_title = $('#cu_title').val();
-    		var cu_min_value = $('#cu_min_value').val();
+    			var cu_min_value = $('#cu_min_value').val();
 				var cu_time = $('#cu_time').val();
+				var cu_elearn_md_study_id = $('#cu_elearn_md_study_id').val();
+				var cu_elearn_qm_quest_definition_id = $('#cu_elearn_qm_quest_definition_id').val();
+				var classCheckbox = $("input[name='class[]']").serializeArray(); 
+			    
+		
 				if(cu_title == "") 
 				{
 					alert(title+' is empty, Please Enter a value');
 					return;
 				}
+				
+				if(cu_elearn_md_study_id == "PILIH") 
+				{
+					alert('Please selected Matapelajaran');
+					return;
+				}
+
+
+				if(cu_elearn_qm_quest_definition_id == "PILIH") 
+				{
+					alert('Please selected Definition Soal');
+					return;
+				}
+
 				if(cu_min_value == "") 
 				{
 					alert('Minimum value is empty, Please Enter a value');
 					return;
 				}
+				
 				if(cu_time == "") 
 				{
 					alert('Processing time is empty, Please Enter a value');
 					return;
 				}
+
+				if (classCheckbox.length === 0) 
+			    { 
+			        alert('Data kelas yang akan di Ujikan belum di pilih'); 
+			        return false;
+			    } 
       break;
       case 'quest':
 	    	if (page=='quest') title = 'Soal';

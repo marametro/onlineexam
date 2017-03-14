@@ -79,6 +79,7 @@
 							}
 							$result = $model->create($page,$_POST['cu']);
 						break;
+						
 						case 'quest':
 							$lokasi_file    = $_FILES['fupload']['tmp_name'];
 							$tipe_file      = $_FILES['fupload']['type'];
@@ -90,11 +91,13 @@
 								$_POST['cu']['photo_url'] = $nama_file_unik;
 							}
 						break;
+						
 						case 'quest_backup':
 							$date_start = date('Y-m-d',strtotime($_POST['cu']['date_start']));
 							$date_end = date('Y-m-d',strtotime($_POST['cu']['date_end']));
 							$result = $model->executeNonQuery("call elearn_qm_quest_backup('".$date_start."','".$date_end."') ");
 						break;
+						
 						case 'manage':
 							$_POST['cu']['code'] = $model->getCode($page);
 							$result = $model->create($page,$_POST['cu']);
@@ -113,22 +116,28 @@
 								$i++;
 							}
 						break;
+
 						case 'tryout':			
 							$_POST['cu']['date_start'] = date('Y-m-d',strtotime($_POST['cu']['date_start']));
 							$_POST['cu']['date_end'] = date('Y-m-d',strtotime($_POST['cu']['date_end']));					
 							$result = $model->create($page,$_POST['cu']);
 							$parentID = $model->getLastID($page);
 
-							$vals = array_values($_POST['school']);
-							$fields = array_keys($_POST['school']);
-							$i = 0;
-							foreach ($fields as $col){
-									$dataSchool = array(
-										'elearn_qm_tryout_id' => $parentID,
-										'elearn_md_school_id' => $vals[$i]
-									);
-									$result = $model->create("tryout_school",$dataSchool);
-									$i++;
+							if(!empty($_POST['school'])) 
+							{
+
+								echo "$count";
+								$vals = array_values($_POST['school']);
+								$fields = array_keys($_POST['school']);
+								$i = 0;
+								foreach ($fields as $col){
+										$dataSchool = array(
+											'elearn_qm_tryout_id' => $parentID,
+											'elearn_md_school_id' => $vals[$i]
+										);
+										$result = $model->create("tryout_school",$dataSchool);
+										$i++;
+								}
 							}
 
 							$vals = array_values($_POST['class']);
