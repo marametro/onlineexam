@@ -8,16 +8,29 @@ session_start();
 if(isset($_POST['username']) && isset($_POST['password']))
 {
 	
-	$datauser=array('username'=>$_POST['username'],
-					'password'=> $_POST['password'] );
+	$datauser=array('username'=> $_POST['username'],
+					'password'=>  $_POST['password']);
+
+	$sql="SELECT a.id, a.username, a.password, a.fullname, a.photo_url, a.elearn_um_role_id, b.name role_name 
+		  FROM elearn_um_user a
+		  inner join  elearn_um_role b on a.elearn_um_role_id = b.id
+		  WHERE a.isdeleted='0' and a.username='$datauser[username]'"; 		
 	
-		$sql="SELECT a.id, a.username, a.password, a.fullname, a.photo_url, a.elearn_um_role_id, b.name role_name 
-			  FROM elearn_um_user a
-			  inner join  elearn_um_role b on a.elearn_um_role_id = b.id
-			  WHERE a.isdeleted='0' and a.username='$datauser[username]' AND a.password='$datauser[password]'";
 	
 	$data = $db->get_single_row($sql);
-	$IsExist=$db->check_exist('elearn_um_user',$datauser);
+
+	$decrypt = Encryption::decrypt($data->password);
+	$dataHaveDecript ="";
+	if ($decrypt ==  $_POST['password']) {
+		$dataHaveDecript = array('username' => $data->username,
+								 'password'=>  $data->password);
+	}else {
+		return;
+	}
+
+	
+	$IsExist=$db->check_exist('elearn_um_user',$dataHaveDecript);
+	
 	
 	if ($IsExist==true) 
 	{

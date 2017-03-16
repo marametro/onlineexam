@@ -60,7 +60,7 @@
   </div>
   <footer class="main-footer">
     <div class="container">
-      <strong>Copyright &copy; 2016 <a href="http://almsaeedstudio.com">Ujian Online</a>.</strong> All rights
+      <strong>Copyright &copy; 2016 <a href="http://bimbel-alqolam.id">Ujian Online</a>.</strong> All rights
       reserved.
     </div>
   </footer>

@@ -21,7 +21,20 @@
 								);
 		$data = $model->delete($page,$datapost,$id);
 		echo'ok';
-	} else if ($action =='add_feature') {
+	}
+	else if($action =='reset') 
+	{
+		$encryptpass = Encryption::encrypt('pass123');
+		$id = $_POST['id'];
+		$datapost = array(
+									'password' => $encryptpass,
+									'updateby' => $userid,
+									'updatedate' => date("Y-m-d H:i:s")
+								);
+		$data = $model->update($page,$datapost,$id);
+
+	}
+	else if ($action =='add_feature') {
 		$id = $_POST['id'];
 		$data = false;
 
@@ -88,7 +101,8 @@
 					switch($page)  
 					{
 						case 'user':
-							$_POST['cu']['password'] = $_POST['cu']['username'];
+							$encrypt = Encryption::encrypt('pass123');
+							$_POST['cu']['password'] = $encrypt;
 							$lokasi_file    = $_FILES['fupload']['tmp_name'];
 							$tipe_file      = $_FILES['fupload']['type'];
 							$nama_file      = $_FILES['fupload']['name'];

@@ -20,7 +20,7 @@ class LoginModel {
 	
 	public function login($username,$password)
 	{
-		$query="SELECT  nis, username,password,email_address,name,photo_url
+		$query="SELECT  *
 				FROM elearn_pc_participant WHERE username='$username' AND password='$password'";
 		$result = $this->db->get_single_row($query);
 		return $result;

@@ -243,19 +243,21 @@
 						$_POST['cu']['date_end'] = date('Y-m-d',strtotime($_POST['cu']['date_end']));
 
 
-						$result = $model->deletePermanent("tryout_school","elearn_qm_tryout_id",$id);
-						$vals = array_values($_POST['school']);
-						$fields = array_keys($_POST['school']);
-						$i = 0;
-						foreach ($fields as $col){
-							$data = array(
-								'elearn_qm_tryout_id' => $id,
-								'elearn_md_school_id' => $vals[$i]
-							);
-							$result = $model->create("tryout_school",$data);
-							$i++;
+						if(!empty($_POST['school'])) 
+						{
+							$result = $model->deletePermanent("tryout_school","elearn_qm_tryout_id",$id);
+							$vals = array_values($_POST['school']);
+							$fields = array_keys($_POST['school']);
+							$i = 0;
+							foreach ($fields as $col){
+								$data = array(
+									'elearn_qm_tryout_id' => $id,
+									'elearn_md_school_id' => $vals[$i]
+								);
+								$result = $model->create("tryout_school",$data);
+								$i++;
+							}
 						}
-
 						$result = $model->deletePermanent("tryout_class","elearn_qm_tryout_id",$id);
 						$vals = array_values($_POST['class']);
 						$fields = array_keys($_POST['class']);

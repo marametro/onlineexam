@@ -107,6 +107,23 @@
 				';
 				} else{ ''; }				
 			?> <!-- delete -->
+
+			<?PHP 
+
+			if ($_SESSION['permission']['elearn_um_'.$_GET['page']]['delete']==true){
+				echo '
+				<a title="reset" href="#"  onclick="resetPassword(\''.$key->id.'\',\''.$title.'\',\''.
+				(
+					$page=="user" ? $key->username : 
+					(
+						$page=="role_permission" ? $key->menu_alias : $key->name
+					) //role_permission
+				) //user
+				.'\')"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></a>
+				';
+				} else{ ''; }	
+			
+			?> 
 			
 		</td>
 	</tr>

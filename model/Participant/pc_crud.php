@@ -49,7 +49,7 @@
 					{
 						case 'participant':
 							$_POST['cu']['nis'] = $model->getCode($page);
-							$_POST['cu']['password'] = Encryption::encrypt($_POST['cu']['username']);//$_POST['cu']['username'];
+							$_POST['cu']['password'] = Encryption::encrypt('pass123');
 							$_POST['cu']['date_birthday'] = date('Y-m-d',strtotime($_POST['cu']['date_birthday']));
 							$lokasi_file    = $_FILES['fupload']['tmp_name'];
 							$tipe_file      = $_FILES['fupload']['type'];

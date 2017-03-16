@@ -176,7 +176,7 @@
           <?PHP echo isset($_SESSION['permission']['elearn_um_role']) ? ($_SESSION['permission']['elearn_um_role']['menu'] ? "<li><a href='?page=role&mod=um&action=list'><i class='fa fa-circle-o text-aqua'></i>Data Peran</a></li>" : "") : ""; ?>
           <?PHP echo isset($_SESSION['permission']['elearn_um_user']) ? ($_SESSION['permission']['elearn_um_user']['menu'] ? "<li><a href='?page=user&mod=um&action=list'><i class='fa fa-circle-o text-aqua'></i>Data Pengguna</a></li>" : "") : ""; ?>
           <?PHP echo isset($_SESSION['permission']['elearn_um_role_permission']) ? ($_SESSION['permission']['elearn_um_role_permission']['menu'] ? "<li><a href='?page=role_permission&mod=um&action=list'><i class='fa fa-circle-o text-aqua'></i>Data Hak Akses</a></li>" : "") : ""; ?>
-        </ul>
+          </ul>
     </li>
 		<li class="treeview">
       <a href="#">

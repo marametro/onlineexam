@@ -25,6 +25,9 @@
 				$Controller->DAddEdit($page,'add',$_GET['id']);	
 			}
 		break;
+		case 'resetpassword' :
+
+		break;
 
 		case 'class':
 		case 'school':

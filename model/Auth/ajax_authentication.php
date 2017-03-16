@@ -24,20 +24,17 @@
 		echo $rows;
 		if ($rows > 0) {
 			$data = $loginModel->login($_POST['username'],$password);
+			
 			$_SESSION['login'] = TRUE;
+			$_SESSION['nis']=$data->nis;
 			$_SESSION['username']=$data->username;
 			$_SESSION['fullname']=$data->name;
+			$_SESSION['elearn_md_school_id']=$data->elearn_md_school_id;
+			$_SESSION['elearn_md_class_id']=$data->elearn_md_class_id;
+			$_SESSION['elearn_md_participant_from_id']=$data->elearn_md_participant_from_id;
+
 		}
-		//echo $login;
-		/*$_SESSION['login'] = TRUE;
-		$uid = $db->query("SELECT id,email FROM elearn_account WHERE email = '$_POST[txtEmail]';", PDO::FETCH_ASSOC)->fetch()['id'];
-		$hash = $db->query("SELECT hash FROM sessions WHERE uid = {$uid};", PDO::FETCH_ASSOC)->fetch()['hash'];
-		$id = $auth->getSessionUID($hash);
-		$data = $auth->getUser($id);
-		$_SESSION['uid']=$id;
-		$_SESSION['fullname']=$data['fullname'];
-		$_SESSION['email']=$data['email'];*/
-		//echo $login['error'];
+		
 	}
 	
 ?>

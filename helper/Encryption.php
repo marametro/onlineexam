@@ -31,5 +31,10 @@ class Encryption
 		}
 		return $result;
 	}
+
 }
+
+
+
+
 ?>

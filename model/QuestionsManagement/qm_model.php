@@ -303,7 +303,14 @@ class QmModel {
 		$result = $this->db->get_num_row($query);
 		return $result;
 	}
-	
+
+
+	public function getTryoutByStudy()
+	{
+		$query="SELECT * FROM elearn_qm_tryout WHERE elearn_md_study_id !='0' GROUP BY elearn_md_study_id";
+		$result = $this->db->getDataTable($query);
+		return $result;
+	}	
 
 	public function getAllTryoutKind()
 	{
@@ -311,21 +318,7 @@ class QmModel {
 		$result = $this->db->getDataTable($query);
 		return $result;
 	}
-
-	public function getAllTryoutGroupByStudy()
-	{
-		$query="SELECT * FROM elearn_qm_tryout WHERE elearn_md_study_id !='0' GROUP BY elearn_md_study_id";
-		$result = $this->db->getDataTable($query);
-		return $result;
-	}
 	
-	
-	public function getAllTryoutByStudyID($id)
-	{
-		$query="SELECT * FROM elearn_qm_tryout WHERE elearn_md_study_id ='$id' ORDER BY id DESC LIMIT 10";
-		$result = $this->db->getDataTable($query);
-		return $result;
-	}
 	
 	
 	public function getAllStudyByID($id)
@@ -336,11 +329,18 @@ class QmModel {
 	}
 	
 
-	public function getAllQuiz()
+	public function getTryoutByIdTryoutKind($elearn_qm_tryout_kind_id)
 	{
-		$query="SELECT COUNT(id) as total FROM elearn_qm_tryout WHERE isdeleted='0' 
-				AND elearn_qm_tryout_kind_id='3'";
-		$result = $this->db->get_num_row($query);
+		$query="SELECT * FROM elearn_qm_tryout WHERE isdeleted='0' 
+				AND elearn_qm_tryout_kind_id='$elearn_qm_tryout_kind_id'";
+		$result = $this->db->getDataTable($query);
+		return $result;
+	}
+
+	public function getTryoutByStudyIdAndTryoutKindId($elearn_md_study_id, $elearn_qm_tryout_kind_id)
+	{
+		$query="SELECT * FROM elearn_qm_tryout WHERE elearn_md_study_id ='$elearn_md_study_id' AND elearn_qm_tryout_kind_id='$elearn_qm_tryout_kind_id' ORDER BY id DESC ";
+		$result = $this->db->getDataTable($query);
 		return $result;
 	}
 	
