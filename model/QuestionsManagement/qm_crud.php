@@ -75,7 +75,7 @@
 							if (empty($lokasi_file)==false) 
 							{
 								FotoUpload($nama_file_unik,$page);
-								$_POST['cu']['icons'] = $nama_file_unik;
+								$_POST['cu']['icon'] = $nama_file_unik;
 							}
 							$result = $model->create($page,$_POST['cu']);
 						break;
@@ -223,7 +223,7 @@
 						if (empty($lokasi_file)==false) 
 						{
 							FotoUpload($nama_file_unik,$page);
-							$_POST['cu']['icons'] = $nama_file_unik;
+							$_POST['cu']['icon'] = $nama_file_unik;
 						}
 					break;
 					

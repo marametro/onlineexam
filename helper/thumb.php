@@ -13,7 +13,7 @@ function FotoUpload($fupload_name,$tbl){
       $vdir_upload = "../../Pictures/user/";
     break;
      case 'tryout_kind':
-      $vdir_upload = "../../Pictures/icons/";
+      $vdir_upload = "../../Pictures/icon/";
     break;
 
     default:

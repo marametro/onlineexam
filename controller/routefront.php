@@ -37,6 +37,13 @@
 			require_once"views/Quiz/view_study_tryout.php";
 		}
 
+		if ($_GET['pages']=='specifiktryout')
+		{	
+			
+			require_once"model/QuestionsManagement/qm_model.php"; 
+			require_once"views/Quiz/view_specifik_tryout.php";
+		}
+
 		if ($_GET['pages']=='tryout')
 		{	
 			

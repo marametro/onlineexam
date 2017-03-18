@@ -24,9 +24,10 @@
 			    <th>Judul</th>
 			    <th>Jenis Tryout</th>
 			    <th>Mata Pelajaran</th>
-			    <th>Nilai Min. Kelulusan</th>
+			    <th>Nilai Minimum</th>
+			    <th>Status  Publish</th>
 			    <th>Create By</th>
-		    	<th>Create Date</th>
+		    	
 			<?php break; ?>
 
 			<?php case 'quest': ?>
@@ -79,12 +80,12 @@
 			<?php break; ?>
 			
 			<?PHP case 'tryout_kind': 
-				$icons = $key->icons ? $key->icons : '';
+				$icons = $key->icon ? $key->icon : '';
 			?>
 
 					<td><?PHP echo $numbers; ?></td>
 				    <td><?PHP echo $key->name; ?></td>
-				    <td><img src="../Pictures/icons/small_<?php echo $icons; ?>" class="img-circle" with="100px" height="80px"></td>
+				    <td><img src="../Pictures/icon/small_<?php echo $icons; ?>" class="img-circle" with="100px" height="80px"></td>
 					<td><?PHP echo $key->createdate; ?></td>
 			<?php break; ?>
 
@@ -94,8 +95,8 @@
 				    <td><?PHP echo $key->cat; ?></td>
 				    <td><?PHP echo $key->study; ?></td>
 				    <td><?PHP echo $key->min_value; ?></td>
+				    <td><?PHP echo $key->publish; ?></td>
 				    <td><?PHP echo $key->create_by; ?></td>
-					<td><?PHP echo $key->createdate; ?></td>
 			<?php break; ?>
 			<?php case 'quest': ?>
 			<?php case 'quest_backup': ?>

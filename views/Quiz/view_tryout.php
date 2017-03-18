@@ -7,13 +7,13 @@ foreach ($data as $key)
 { 
 	$encryptid = Encryption::encrypt($key->id);
 	$encryptcreatedate = Encryption::encrypt($key->createdate);
-	$icons = $key->icons ? $key->icons : '';
+	$icon = $key->icon ? $key->icon : '';
 
 ?>
 <div class="col-md-4 col-sm-6 col-xs-12">
 <div class="info-box">
-<?PHP if ($icons !="") { ?>
-	<span class="info-box-icon bg-green"><img src="Pictures/icons/small_<?php echo $icons; ?>" class="img-circle" with="100px" height="80px"></span>
+<?PHP if ($icon !="") { ?>
+	<span class="info-box-icon bg-green"><img src="Pictures/icon/small_<?php echo $icon; ?>" class="img-circle" with="100px" height="80px"></span>
 <?PHP }else { ?>
 <span class="info-box-icon bg-green"></span>
 <?PHP } ?>

@@ -321,7 +321,7 @@ class QmModel {
 	
 	
 	
-	public function getAllStudyByID($id)
+	public function getStudyByID($id)
 	{
 		$query="SELECT * FROM elearn_md_study WHERE id='$id'";
 		$result = $this->db->get_single_row($query);
@@ -329,18 +329,38 @@ class QmModel {
 	}
 	
 
-	public function getTryoutByIdTryoutKind($elearn_qm_tryout_kind_id)
+	public function getTryoutByIdTryoutKind($isdeleted , $elearn_qm_tryout_kind_id, $publish)
 	{
-		$query="SELECT * FROM elearn_qm_tryout WHERE isdeleted='0' 
+		$query="SELECT * FROM elearn_qm_tryout WHERE isdeleted='$isdeleted' AND  publish='$publish'
 				AND elearn_qm_tryout_kind_id='$elearn_qm_tryout_kind_id'";
 		$result = $this->db->getDataTable($query);
 		return $result;
 	}
 
-	public function getTryoutByStudyIdAndTryoutKindId($elearn_md_study_id, $elearn_qm_tryout_kind_id)
+	public function getTryoutByStudyIdAndTryoutKindId($elearn_md_study_id, $elearn_qm_tryout_kind_id,$isdeleted )
 	{
-		$query="SELECT * FROM elearn_qm_tryout WHERE elearn_md_study_id ='$elearn_md_study_id' AND elearn_qm_tryout_kind_id='$elearn_qm_tryout_kind_id' ORDER BY id DESC ";
+		$query="SELECT * FROM elearn_qm_tryout WHERE elearn_md_study_id ='$elearn_md_study_id' 
+		AND elearn_qm_tryout_kind_id='$elearn_qm_tryout_kind_id' AND isdeleted='$isdeleted' ORDER BY id DESC ";
 		$result = $this->db->getDataTable($query);
+		return $result;
+	}
+
+	public function getInformationSpecifikTryoutById($id)
+	{
+		$query="SELECT a.id, a.title, a.min_value,a.time, a.date_start, a.date_end , a.elearn_qm_quest_definition_id,
+ 				a.type_quest, a.publish, a.remedial, a.type_quest, a.amount_quest, a.attention , b.name  as Study,
+				c.definition_name FROM elearn_qm_tryout a
+				INNER JOIN elearn_md_study b ON a.elearn_md_study_id = b.id
+				INNER JOIN elearn_qm_quest_definition c ON a.elearn_qm_quest_definition_id =  c.id WHERE a.id='$id'";
+				$result = $this->db->get_single_row($query);
+		return $result;
+	}
+
+	public function getInformationSpecifikClassFollowTryout($elearn_qm_tryout_id)
+	{
+		$query="SELECT a.id , b.name as classname, b.id as classid FROM elearn_qm_tryout_class a 
+				INNER JOIN elearn_md_class b ON a.elearn_md_class_id = b.id  WHERE a.elearn_qm_tryout_id='$elearn_qm_tryout_id'";
+				$result = $this->db->getDataTable($query);
 		return $result;
 	}
 	

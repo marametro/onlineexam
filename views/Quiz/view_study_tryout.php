@@ -1,9 +1,11 @@
 <section style="padding: 0px 15px 0;">
 	<h3>
-		<small><ol class="breadcrumb">
-		<li><a href="#"><i></i> DATA TRYOUT YANG DI UJIKAN</a></li>
-		<li class="active">DATA MATA PELAJARAN</li>
-	  </ol></small>
+		<small>
+		<ol class="breadcrumb">
+			<li><a href="#"><i></i> DATA TRYOUT YANG DI UJIKAN</a></li>
+			<li class="active">DATA MATA PELAJARAN</li>
+	  	</ol>
+	  	</small>
 	</h3>  
 </section>
 <div class="row">
@@ -13,15 +15,14 @@
 	$decryptid = Encryption::decrypt($elearnqmtryoutkindid);
 
 	$QmModel =  new QmModel();
-	$data =  $QmModel->getTryoutByIdTryoutKind($decryptid);
+	$data =  $QmModel->getTryoutByIdTryoutKind('0',$decryptid,'yes');
 
-	
 	foreach ($data as $key) 
 	{ 
-		$datastudy = $QmModel->getAllStudyByID($key->elearn_md_study_id);
-		$datatryout = $QmModel->getTryoutByStudyIdAndTryoutKindId($key->elearn_md_study_id,$key->elearn_qm_tryout_kind_id);
-		
-		
+		$datastudy = $QmModel->getStudyByID($key->elearn_md_study_id);
+		$datatryout = $QmModel->getTryoutByStudyIdAndTryoutKindId($key->elearn_md_study_id,$key->elearn_qm_tryout_kind_id,'0');
+				
+
 ?>
 <div class="col-md-6">
 	<div class="box box-primary">
@@ -34,6 +35,8 @@
 	{ 
 	
 	$id = $keys->id;
+	$encryptid = Encryption::encrypt($keys->id);
+	$encryptcreatedate = Encryption::encrypt($keys->createdate);
 	?>
 	<ul class="products-list product-list-in-box">
 		<li class="item">
@@ -50,27 +53,16 @@
 		</div>
 		<div>
 			<a href="#" class="title">
-				<span>
-					Status :	
-				</span>
-			</a>
-			<?PHP 
-				if ($keys->publish =='yes') 
-				echo 'Publish';
-				else 
-				echo 'Pending';
-		   ?>
-		</div>
-		<div>
-			<a href="#" class="title">
 				Periode Pengerjaan :
 			</a>
 			<?PHP echo Helper::format_indo($keys->date_start); ?> sd
 			<?PHP echo Helper::format_indo($keys->date_end); ?>
 		</div>
-		<a href="#" class="btn btn-info btn-xs">
-			Click Info Lebih Lanjut <i class="small-box-footer "></i>
-		</a>
+		<?PHP 
+			echo "<a href='specifiktryout+$encryptid-$encryptcreatedate' class='btn btn-info btn-xs'>
+	        Click Info Lebih Lanjut <i class='small-box-footer'></i>
+		</a>";
+		?>
 		<div class="box-footer text-center">
 			</div>
 		</div>
